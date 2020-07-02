@@ -43,7 +43,7 @@
                                     <tr>
                                         <td>{{$angkaAwal}}</td>
                                         <td>
-                                            <img src="{{url($member->img)}}" alt="Error" width="100" height="100">
+                                            <img src="{{url($member->img)}}" alt="Error" title="Gambar {{$member->name}}" width="100" height="100">
                                         </td>
                                         <td>{{$member->name}}</td>
                                         <td>{{$member->product}}</td>
