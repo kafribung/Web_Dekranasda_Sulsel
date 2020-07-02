@@ -37,6 +37,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Relation one to many (MEMBER)
+    public function members()
+    {
+        return $this->hasMany('App\Models\Member');
+    }
+
     // Mutator
     public function getImgAttribute($value)
     {

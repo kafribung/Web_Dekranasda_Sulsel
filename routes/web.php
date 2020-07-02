@@ -23,6 +23,9 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Admin
     Route::resource('admin', 'AdminController');
+
+    // Anggota
+    Route::resource('member', 'MemberController');
 });
 
 Auth::routes();

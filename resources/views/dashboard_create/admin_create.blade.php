@@ -37,7 +37,7 @@
 
                                 <div class="form-group">
                                     <label for="email" class="control-label mb-1">Email</label>
-                                    <input id="email" name="email" email="email" class="form-control @error('email') is-invalid @enderror"   autocomplete="off" placeholder="Input Email" value="{{old('email')}}">
+                                    <input id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror"   autocomplete="off" placeholder="Input Email" value="{{old('email')}}">
 
                                     @if ($errors->has('email'))
                                         <p class="alert alert-danger">{{$errors->first('email')}}</p>
