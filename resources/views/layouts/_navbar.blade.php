@@ -50,7 +50,7 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa fa-power -off"></i>Logout</a>
+                    <a class="nav-link" href="" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa fa-power-off"></i>Logout</a>
 
                     <form id="logout" action="{{ route('logout') }}" method="POST" style="d-none">
                         @csrf

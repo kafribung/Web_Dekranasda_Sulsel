@@ -18,7 +18,7 @@
                             <form action="/member/{{$member->id}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label for="img" class="control-label mb-1">Foto</label>
                                     <img src="{{url($member->img)}}" alt="Error" title="Gambar {{$member->name}}" width="80" height="80" >
                                     <input id="img" name="img" type="file" accept="image/*" class="form-control @error('img') is-invalid @enderror" autofocus placeholder="Input Foto">
@@ -26,7 +26,7 @@
                                     @error('img')
                                         <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>

@@ -18,15 +18,6 @@
                             <form action="/member" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="img" class="control-label mb-1">Foto</label>
-                                    <input id="img" name="img" type="file" accept="image/*" class="form-control @error('img') is-invalid @enderror" autofocus placeholder="Input Foto">
-
-                                    @error('img')
-                                        <p class="alert alert-danger">{{$message}}</p>
-                                    @enderror
-                                </div>
-
-                                <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
                                     <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"   autocomplete="off" placeholder="Input Nama" value="{{old('name')}}">
 

@@ -26,6 +26,17 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Anggota
     Route::resource('member', 'MemberController');
+
+    // Anggote Gallery
+    Route::get('member-img/{slug}', 'MemberImgController@show');
+    Route::get('member-img/create/{slug}', 'MemberImgController@create');
+    Route::post('member-img/{slug}', 'MemberImgController@store');
+    Route::get('member-img/{slug}/edit', 'MemberImgController@edit');
+    Route::put('member-img/{id}', 'MemberImgController@update');
+
+
+
+
 });
 
 Auth::routes();

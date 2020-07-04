@@ -32,13 +32,7 @@ class MemberController extends Controller
     {
         $data = $request->all();
 
-        if ($request->has('img')) {
-            $img = $request->file('img');
-            $name= time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_members'), $name);
-
-            $data['img'] =  $name;
-        }
+        
 
         $data['slug'] = Str::slug($request->name);
 
@@ -58,6 +52,10 @@ class MemberController extends Controller
     {
         $member = Member::where('slug', $slug)->first();
 
+        if (!$member->isOwner()) {
+            return redirect('/member')->with('msg', 'Anda tidak memiliki akses');
+        }
+
         return view('dashboard_edit.member_edit', compact('member'));
     }
 
@@ -65,14 +63,6 @@ class MemberController extends Controller
     public function update(MemberRequest $request, $id)
     {
         $data = $request->all();
-
-        if ($request->has('img')) {
-            $img = $request->file('img');
-            $name= time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_members'), $name);
-
-            $data['img'] =  $name;
-        }
 
         $data['slug'] = Str::slug($request->name);
 

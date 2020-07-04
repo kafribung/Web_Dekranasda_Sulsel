@@ -24,7 +24,7 @@ class MemberRequest extends FormRequest
     public function rules()
     {
         return [
-            'img'      => ['required', 'mimes:png,jpg,jpeg'],
+            // 'img'      => ['required', 'mimes:png,jpg,jpeg'],
             'name'     => ['required', 'string', 'min:3', 'max:20', 'unique:members'],
             'product'  => ['required', 'string', 'min:3', 'max:200'],
             'contact'  => ['required', 'string', 'min:10', 'max:15'],

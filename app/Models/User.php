@@ -43,6 +43,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Member');
     }
 
+    // Relation one to many (MEMBER)
+    public function membersImgs()
+    {
+        return $this->hasMany('App\Models\MemberImg');
+    }
+
     // Mutator
     public function getImgAttribute($value)
     {
