@@ -38,6 +38,7 @@
                                         <td>{{$angkaAwal}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>
+
                                             <a href="/product-category/{{$category->id}}/edit" class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
                             
                                             <form action="/product-category/{{$category->id}}" method="POST" class="d-inline-flex">

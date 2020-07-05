@@ -14,4 +14,10 @@ class ProductCategory extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    // Relation one to many (PRODUCT)
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
 }

@@ -32,8 +32,6 @@ class MemberController extends Controller
     {
         $data = $request->all();
 
-        
-
         $data['slug'] = Str::slug($request->name);
 
         $request->user()->members()->create($data);

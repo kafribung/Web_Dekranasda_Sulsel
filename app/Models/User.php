@@ -55,6 +55,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\ProductCategory');
     }
 
+    // Relation one to many (PRODUCT)
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
+
     // Mutator
     public function getImgAttribute($value)
     {

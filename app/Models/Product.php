@@ -5,38 +5,36 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 
-class Member extends Model
+class Product extends Model
 {
     protected $touches = ['user'];
     protected $guarded = ['created_at', 'updated_at'];
-    
+
     // Relation many to one (USER)
     public function user()
     {
         return $this->belongsTo('App\Models\User');
     }
 
-    // Relation one to many (MEMBER IMG)
-    public function membersImgs()
+    // Relation many to one (MEMBER)
+    public function member()
     {
-        return $this->hasMany('App\Models\MemberImg');
+        return $this->belongsTo('App\Models\Member');
     }
 
-    // Relation one to many (PRODUCT)
-    public function products()
+    // Relation many to one (MEMBER)
+    public function product_category()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->belongsTo('App\Models\ProductCategory');
     }
 
-
-
-    // isOwner
+     // isOwner
     public function isOwner()
     {
         $user = Auth::check();
 
         if ($user) {
-            return Auth::user()->id == $this->user->id;
+            return Auth::user()->id == $this->user_id;
         } return false;
     }
 

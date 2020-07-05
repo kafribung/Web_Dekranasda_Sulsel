@@ -27,7 +27,7 @@
                     <a href="/product-category"> <i class="menu-icon ti-layout"></i>Kategori Produk</a>
                 </li>
                 
-                <li class=" {{Request()->is('product') ? 'active' : ''}}">
+                <li class=" {{Request()->segment(1) =='product' ? 'active' : ''}}">
                     <a href="/product"> <i class="menu-icon ti-shopping-cart-full"></i>Data Produk</a>
                 </li>
             </ul>
