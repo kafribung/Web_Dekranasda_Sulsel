@@ -34,8 +34,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('member-img/{slug}/edit', 'MemberImgController@edit');
     Route::put('member-img/{id}', 'MemberImgController@update');
 
+    // Produk Kategori
+    Route::resource('product-category', 'ProductCategoryController');
 
-
+    // Produk
+    Route::resource('product', 'ProductController');
 
 });
 

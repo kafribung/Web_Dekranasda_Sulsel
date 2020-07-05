@@ -80,7 +80,6 @@ class MemberImgController extends Controller
     // UPDATE
     public function update(MemberImgRequest $request, $id)
     {
-
         $data = $request->all();
 
         if ($request->has('img')) {

@@ -19,6 +19,17 @@
                 <li class=" {{Request()->segment(1) == 'member' ? 'active' : ''}}">
                     <a href="/member"> <i class="menu-icon ti-signal"></i>Data Anggota</a>
                 </li>
+
+                <li class="menu-title">Produk</li>
+
+                <!-- /.menu-title -->
+                <li class=" {{Request::segment(1) == 'product-category' ? 'active' : ''}}">
+                    <a href="/product-category"> <i class="menu-icon ti-layout"></i>Kategori Produk</a>
+                </li>
+                
+                <li class=" {{Request()->is('product') ? 'active' : ''}}">
+                    <a href="/product"> <i class="menu-icon ti-shopping-cart-full"></i>Data Produk</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
