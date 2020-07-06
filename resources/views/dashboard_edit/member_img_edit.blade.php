@@ -12,7 +12,7 @@
                 <div class="card-body ">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Edit Data Galeri Anggota</strong>
+                            <strong class="card-title">Edit Data Galeri {{$memberImg->member->name}}</strong>
                         </div>
                         <div class="card-body">
                             <form action="/member-img/{{$memberImg->id}}" method="POST" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="img" class="control-label mb-1">Foto</label>
-                                    <img src="{{url($memberImg->img)}}" alt="Error" width="80" height="80">
+                                    <img src="{{url($memberImg->img)}}" alt="Error" title="Gambar {{$memberImg->member->name}}" width="80" height="80">
                                     <input id="img" name="img" type="file" accept="image/*" class="form-control @error('img') is-invalid @enderror" autofocus placeholder="Input Foto">
 
                                     @error('img')

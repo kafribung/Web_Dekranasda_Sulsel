@@ -2,83 +2,93 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// Import Class ProductRequest
+use App\Http\Requests\ProductImgRequest;
+
+// Impoer Model
+use App\Models\Product;
+USE App\Models\ProductImg;
 
 class ProductImgController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    // CREATE
+    public function create($slug)
     {
-        //
+        $product = Product::where('slug', $slug)->first();
+
+        if (!$product->isOwner()) {
+            return redirect('/product-img/'. $product->slug)->with('msg', 'Anda tidak memiliki akses');
+        }
+
+        return view('dashboard_create.product_img_create', compact('product'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    // STORE
+    public function store(ProductImgRequest $request, $id)
     {
-        //
+        $model = Product::findOrFail($id);
+
+        if (ProductImg::where('product_id', $id)->count() >= 5) {
+            return redirect('/product-img/'. $model->slug)->with('msg', 'Data Galeri Max 5');
+        }
+
+        $data = $request->all();
+
+        if ($img = $request->file('img')) {
+            $name= time(). '.'. $img->getClientOriginalExtension();
+            $img->move(public_path('img_products'), $name);
+
+            $data['img'] = $name;
+        }
+
+        $data['product_id'] = $id;
+
+        $request->user()->productsImgs()->create($data);
+
+        return redirect('/product-img/'. $model->slug)->with('msg', 'Data Galeri Produk Berhasil ditambahkan');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    // SHOW
+    public function show($slug)
     {
-        //
+        $product = Product::with('user')->where('slug', $slug)->latest()->first();
+
+        return view('dashboard.product_img', compact('product'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // EDIT
     public function edit($id)
     {
-        //
+        $productImg = ProductImg::with('product', 'user')->findOrFail($id);
+
+        return view('dashboard_edit.product_img_edit', compact('productImg'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    // UPDATE
+    public function update(ProductImgRequest $request, $id)
     {
-        //
+        
+        $data = $request->all();
+
+        $model = ProductImg::findOrFail($id)->first();
+
+        if ($img = $request->file('img')) {
+            $name= time(). '.'. $img->getClientOriginalExtension();
+            $img->move(public_path('img_products'), $name);
+
+            $data['img'] = $name;
+        }
+
+        ProductImg::findOrFail($id)->update($data);
+
+        return redirect('/product-img/'. $model->product->slug)->with('msg', 'Data Galeri Produk Berhasil diedit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // DESTOY
     public function destroy($id)
     {
-        //
+        $model = ProductImg::destroy($id);
+
+        return redirect('/product-img/'. $model->product->slug)->with('msg', 'Data Galeri Produk Berhasil dihapus');
     }
 }

@@ -33,7 +33,7 @@ class MemberImgController extends Controller
 
         $data = $request->all();
 
-        if (MemberImg::where('user_id', $id)->count() >= 3) {
+        if (MemberImg::where('member_id', $id)->count() >= 3) {
             return redirect('/member-img/'. $model->slug)->with('msg', 'Data Galeri Max 3');
         }
 
@@ -55,7 +55,7 @@ class MemberImgController extends Controller
     // SHOW
     public function show($slug)
     {
-        $member = Member::with('membersImgs')->where('slug', $slug)->first();
+        $member = Member::with('membersImgs')->where('slug', $slug)->get();
 
         return view('dashboard.member_img', compact('member'));
     }
@@ -77,6 +77,9 @@ class MemberImgController extends Controller
     {
         $data = $request->all();
 
+        $model = MemberImg::findOrFail($id)->first();
+        
+
         if ($request->has('img')) {
             $img = $request->file('img');
             $name= time(). '.' . $img->getClientOriginalExtension();
@@ -85,9 +88,9 @@ class MemberImgController extends Controller
             $data['img'] =  $name;
         }
 
-        $model = MemberImg::findOrFail($id)->update($data);
+        MemberImg::findOrFail($id)->update($data);
 
-        return redirect('/member-img/'. $model->slug)->with('msg', 'Data Galeri Anggota Berhasil diedit');
+        return redirect('/member-img/'. $model->member->slug)->with('msg', 'Data Galeri Anggota Berhasil diedit');
     }
 
     // DELETE
