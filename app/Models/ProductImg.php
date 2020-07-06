@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Auth;
 
-class MemberImg extends Model
+class ProductImg extends Model
 {
-    protected $touches = ['user', 'member'];
+    protected $touches = ['user', 'product'];
     protected $guarded = ['created_at', 'updated_at'];
     
     // Relation many to one (USER)
@@ -17,9 +17,9 @@ class MemberImg extends Model
     }
 
     // Relation many to one (USER)
-    public function member()
+    public function product()
     {
-        return $this->belongsTo('App\Models\Member');
+        return $this->belongsTo('App\Models\Product');
     }
 
     // isOwner
@@ -36,6 +36,6 @@ class MemberImg extends Model
     // Mutator
     public function getImgAttribute($value)
     {
-        return url('img_members', $value);
+        return url('img_products', $value);
     }
 }

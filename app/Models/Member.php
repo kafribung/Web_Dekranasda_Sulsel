@@ -28,8 +28,6 @@ class Member extends Model
         return $this->hasMany('App\Models\Product');
     }
 
-
-
     // isOwner
     public function isOwner()
     {

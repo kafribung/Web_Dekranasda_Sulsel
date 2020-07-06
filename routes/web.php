@@ -40,6 +40,14 @@ Route::group(['middleware' => 'admin'], function () {
     // Produk
     Route::resource('product', 'ProductController');
 
+
+    // Product Gallery
+    Route::get('product-img/{slug}', 'ProductImgController@show');
+    Route::get('product-img/create/{slug}', 'ProductImgController@create');
+    Route::post('product-img/{slug}', 'ProductImgController@store');
+    Route::get('product-img/{slug}/edit', 'ProductImgController@edit');
+    Route::put('Product-img/{id}', 'ProductImgController@update');
+
 });
 
 Auth::routes();

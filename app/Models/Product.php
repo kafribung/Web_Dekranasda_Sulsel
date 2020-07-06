@@ -28,6 +28,12 @@ class Product extends Model
         return $this->belongsTo('App\Models\ProductCategory');
     }
 
+     // Relation one to many (PRODUCT IMG)
+     public function productsImgs()
+     {
+         return $this->hasMany('App\Models\ProductImg');
+     }
+
      // isOwner
     public function isOwner()
     {

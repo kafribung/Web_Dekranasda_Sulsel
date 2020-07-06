@@ -12,12 +12,7 @@ use App\Models\MemberImg;
 
 class MemberImgController extends Controller
 {
-    // READ
-    public function index()
-    {
-        //
-    }
-
+    
     // CREATE
     public function create($slug)
     {
