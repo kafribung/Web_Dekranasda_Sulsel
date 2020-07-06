@@ -61,6 +61,10 @@ class ProductImgController extends Controller
     {
         $productImg = ProductImg::with('product', 'user')->findOrFail($id);
 
+        if (!$productImg->isOwner()) {
+            return redirect('/product-img/'. $productImg->product->slug)->with('msg', 'Anda tidak memiliki akses');
+        }
+
         return view('dashboard_edit.product_img_edit', compact('productImg'));
     }
 
@@ -87,7 +91,9 @@ class ProductImgController extends Controller
     // DESTOY
     public function destroy($id)
     {
-        $model = ProductImg::destroy($id);
+        $model = ProductImg::findOrFail($id)->first();
+
+        ProductImg::destroy($id);
 
         return redirect('/product-img/'. $model->product->slug)->with('msg', 'Data Galeri Produk Berhasil dihapus');
     }

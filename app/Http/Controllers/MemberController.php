@@ -48,6 +48,7 @@ class MemberController extends Controller
     // EDIT
     public function edit($slug)
     {
+        dd($slug);
         $member = Member::where('slug', $slug)->first();
 
         if (!$member->isOwner()) {

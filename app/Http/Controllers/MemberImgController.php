@@ -55,7 +55,7 @@ class MemberImgController extends Controller
     // SHOW
     public function show($slug)
     {
-        $member = Member::with('membersImgs')->where('slug', $slug)->get();
+        $member = Member::with('membersImgs')->where('slug', $slug)->first();
 
         return view('dashboard.member_img', compact('member'));
     }
@@ -96,8 +96,10 @@ class MemberImgController extends Controller
     // DELETE
     public function destroy($id)
     {
-        $model = MemberImg::destroy($id);
+        $model = MemberImg::findOrFail($id)->first();
 
-        return redirect('/member-img/'. $model->member->slug)->with('msg', 'Data Galeri Anggota Berhasil ditambahkan');
+        MemberImg::destroy($id);
+
+        return redirect('/member-img/'. $model->member->slug)->with('msg', 'Data Galeri Anggota Berhasil dihapus');
     }
 }

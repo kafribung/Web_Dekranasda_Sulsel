@@ -53,7 +53,7 @@
                                                     @csrf
                                                     @method('DELETE')
                                 
-                                                    <button type="submit" onclick="return confirm('Hapus Data {{$memberImg->name}}?')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" onclick="return confirm('Hapus Data {{$memberImg->img}}?')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
                                                 </form>
                                             @endif
                                         </td>

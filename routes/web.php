@@ -33,6 +33,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('member-img/{slug}', 'MemberImgController@store');
     Route::get('member-img/{slug}/edit', 'MemberImgController@edit');
     Route::put('member-img/{id}', 'MemberImgController@update');
+    Route::delete('member-img/{id}', 'MemberImgController@destroy');
+
 
     // Produk Kategori
     Route::resource('product-category', 'ProductCategoryController');
@@ -47,6 +49,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('product-img/{slug}', 'ProductImgController@store');
     Route::get('product-img/{slug}/edit', 'ProductImgController@edit');
     Route::put('product-img/{id}', 'ProductImgController@update');
+    Route::delete('product-img/{id}', 'ProductImgController@destroy');
+
 
 });
 
