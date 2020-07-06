@@ -45,6 +45,10 @@ class ProductCategoryController extends Controller
     {
         $productCategory = ProductCategory::findOrFail($id);
 
+        if (!$productCategory->isOwner()) {
+            return redirect('/product-category')->with('msg', 'Anda tidak memiliki akses');
+        }
+
         return view('dashboard_edit.product_category_edit', compact('productCategory'));
     }
 

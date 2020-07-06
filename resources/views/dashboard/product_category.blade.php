@@ -39,6 +39,7 @@
                                         <td>{{$category->name}}</td>
                                         <td>
 
+                                            @if ($category->isOwner())
                                             <a href="/product-category/{{$category->id}}/edit" class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
                             
                                             <form action="/product-category/{{$category->id}}" method="POST" class="d-inline-flex">
@@ -47,6 +48,7 @@
                             
                                                 <button type="submit" onclick="return confirm('Hapus Data {{$category->name}}?')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
                                             </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @php

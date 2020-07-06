@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class ProductCategory extends Model
 {
@@ -19,5 +20,15 @@ class ProductCategory extends Model
     public function products()
     {
         return $this->hasMany('App\Models\Product');
+    }
+
+    // isOwner
+    public function isOwner()
+    {
+        $user = Auth::check();
+
+        if ($user)
+            return Auth::user()->id == $this->user_id;
+        return false;
     }
 }

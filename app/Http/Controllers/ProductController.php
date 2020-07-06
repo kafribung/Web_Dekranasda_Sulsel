@@ -56,6 +56,10 @@ class ProductController extends Controller
         $productCategories = ProductCategory::latest()->get();
         $product = Product::with('user', 'member', 'product_category')->where('slug', $slug)->first();
 
+        if (!$product->isOwner()) {
+            return redirect('/product')->with('msg', 'Anda tidak memiliki akses');
+        }
+
         return view('dashboard_edit.product_edit', compact('product', 'members', 'productCategories'));
     }
 
