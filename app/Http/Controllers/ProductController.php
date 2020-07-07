@@ -80,4 +80,30 @@ class ProductController extends Controller
 
         return redirect('/product')->with('msg', 'Data Produk Berhasil dihapus');   
     }
+
+    public function popular($slug)
+    {
+        
+        $data = Product::where('slug', $slug)->first();
+
+        // Seleksi Popular Max 1
+        if (Product::where('popular', 1)->count() >= 1) {
+            return redirect('/product')->with('msg', 'Data Produk Popular MAX 1');   
+        }
+
+        $data->popular = 1;
+        $data->save();
+
+        return redirect('/product')->with('msg', 'Data Produk '. $data->name .' diset Popular');   
+    }
+
+    public function nopopular($slug)
+    {
+        $data = Product::where('slug', $slug)->first();
+
+        $data->popular = 0;
+        $data->save();
+
+        return redirect('/product')->with('msg', 'Data Produk '. $data->name. ' diset Not Popular');   
+    }
 }

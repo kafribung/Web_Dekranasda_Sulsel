@@ -49,9 +49,16 @@
                                         <td>{!! Str::limit($product->description, 30)  !!}</td>
                             
                                         <td>
-                                            <a href="/product-img/{{$product->slug}}" class="btn btn-outline-dark btn-sm "><i class="fa fa-picture-o"></i></a>
+                                            <a href="/product-img/{{$product->slug}}" class="btn btn-outline-success btn-sm "><i class="fa fa-picture-o"></i></a>
 
                                             @if ($product->isOwner())
+
+                                                @if ($product->popular == 0)
+                                                    <a href="/product/{{$product->slug}}/popular" class="btn btn-outline-dark btn-sm" ><i class="fa fa-star"></i></a>
+                                                @else
+                                                    <a href="/product/{{$product->slug}}/no-popular" class="btn btn-outline-secondary btn-sm" ><i class="fa fa-star"></i></a>
+                                                @endif
+
                                                 <a href="/product/{{$product->slug}}/edit" class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
                                                 <form action="/product/{{$product->id}}" method="POST" class="d-inline-flex">
                                                     @csrf

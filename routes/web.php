@@ -42,6 +42,11 @@ Route::group(['middleware' => 'admin'], function () {
     // Produk
     Route::resource('product', 'ProductController');
 
+    // Produk Popular
+    Route::get('/product/{slug}/popular', 'ProductController@popular');
+    Route::get('/product/{slug}/no-popular', 'ProductController@nopopular');
+
+
 
     // Product Gallery
     Route::get('product-img/{slug}', 'ProductImgController@show');
