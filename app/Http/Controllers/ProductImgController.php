@@ -71,10 +71,10 @@ class ProductImgController extends Controller
     // UPDATE
     public function update(ProductImgRequest $request, $id)
     {
+        $model = ProductImg::findOrFail(5);
         
         $data = $request->all();
 
-        $model = ProductImg::findOrFail($id)->first();
 
         if ($img = $request->file('img')) {
             $name= time(). '.'. $img->getClientOriginalExtension();
@@ -91,7 +91,7 @@ class ProductImgController extends Controller
     // DESTOY
     public function destroy($id)
     {
-        $model = ProductImg::findOrFail($id)->first();
+        $model = ProductImg::findOrFail($id);
 
         ProductImg::destroy($id);
 

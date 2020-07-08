@@ -22,7 +22,7 @@
                                     <input id="img" name="img" type="file" accept="image/*" class="form-control @error('img') is-invalid @enderror" autofocus placeholder="Input Foto">
 
                                     @error('img')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
@@ -46,14 +46,14 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
 <script>
     ClassicEditor
-        .create( document.querySelector( '.ckeditor' ) )
-        .then( editor => {
-                console.log( editor );
-        } )
-        .catch( error => {
-                console.error( error );
-        } );
+        .create(document.querySelector('.ckeditor'))
+        .then(editor => {
+            console.log(editor);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
 </script>
 @endpush
 @endsection
-
