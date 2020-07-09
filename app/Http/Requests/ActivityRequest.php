@@ -25,7 +25,7 @@ class ActivityRequest extends FormRequest
     {
         return [
             'img'  => ['required', 'mimes:png,jpg,jpeg'],
-            'name' => ['required', 'string', 'min:5', 'max:100'],
+            'name' => ['required', 'string', 'min:5', 'max:100', 'unique:activities'],
             'tgl'  => ['required', 'date'],
             'description' => ['required'],
         ];

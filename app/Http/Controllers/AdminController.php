@@ -97,6 +97,6 @@ class AdminController extends Controller
 
         User::destroy($id);
 
-        return redirect('/admin')->with('msg', 'Data admin berhasil diedit');
+        return redirect('/admin')->with('msg', 'Data admin berhasil dihapus');
     }
 }

@@ -42,7 +42,7 @@ class ActivityController extends Controller
 
         $request->user()->activities()->create($data);
 
-        return redirect('/activity')->with('Data Kegiatan Berhasil ditambahkan');
+        return redirect('/activity')->with('msg', 'Data Kegiatan Berhasil ditambahkan');
     }
 
     // SHOW
@@ -52,32 +52,38 @@ class ActivityController extends Controller
     }
 
     // EDIT
-    public function edit($id)
+    public function edit($slug)
     {
-        return view('dashboard_edit.activity_edit');
-        
+        $activity =  Activity::with('user')->where('slug', $slug)->first();
+
+        return view('dashboard_edit.activity_edit', compact('activity'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    // UPDATE
+    public function update(ActivityRequest $request, $id)
     {
-        //
+        $data = $request->all();
+
+        if ($img = $request->file('img')) {
+            $name = time(). '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('img_activity'), $name);
+
+            $data['img'] = $name;
+        }
+
+        $data['slug'] = Str::slug($request->name);
+
+        Activity::findOrFail($id)->update($data);
+
+        return redirect('/activity')->with('msg','Data Kegiatan Berhasil diedit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // DELETE
     public function destroy($id)
     {
-        //
+        Activity::destroy($id);
+
+        return redirect('/activity')->with('msg','Data Kegiatan Berhasil dihapus');
     }
+
 }

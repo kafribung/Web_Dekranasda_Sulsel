@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Tambah Kegiatan | Dekranasda SULSEL')
+@section('title', 'Tambah Aktivitas | Dekranasda SULSEL')
 @section('content')
 
 <!-- Content -->
@@ -12,7 +12,7 @@
                 <div class="card-body ">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Tambah Data Kegiatan</strong>
+                            <strong class="card-title">Tambah Data Aktivitas</strong>
                         </div>
                         <div class="card-body">
                             <form action="/activity" method="POST" enctype="multipart/form-data">
