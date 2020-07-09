@@ -46,8 +46,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/product/{slug}/popular', 'ProductController@popular');
     Route::get('/product/{slug}/no-popular', 'ProductController@nopopular');
 
-
-
     // Product Gallery
     Route::get('product-img/{slug}', 'ProductImgController@show');
     Route::get('product-img/create/{slug}', 'ProductImgController@create');
@@ -55,6 +53,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('product-img/{slug}/edit', 'ProductImgController@edit');
     Route::put('product-img/{id}', 'ProductImgController@update');
     Route::delete('product-img/{id}', 'ProductImgController@destroy');
+
+    // Kegiatan
+    Route::resource('activity', 'ActivityController');
 
 
 });

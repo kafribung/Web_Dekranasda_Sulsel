@@ -19,7 +19,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
-                                    <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"   autocomplete="off" placeholder="Input Nama" value="{{old('name')}}">
+                                    <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" autofocus  autocomplete="off" placeholder="Input Nama" value="{{old('name')}}">
 
                                     @error('name')
                                         <p class="alert alert-danger">{{$message}}</p>

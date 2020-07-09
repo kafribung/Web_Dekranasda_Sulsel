@@ -75,7 +75,6 @@ class ProductImgController extends Controller
         
         $data = $request->all();
 
-
         if ($img = $request->file('img')) {
             $name= time(). '.'. $img->getClientOriginalExtension();
             $img->move(public_path('img_products'), $name);
