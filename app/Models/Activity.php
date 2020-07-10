@@ -18,7 +18,7 @@ class Activity extends Model
     // Relation  one to  many (COMMENT)
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\CommentActivity');
     }
 
     // Mutator
@@ -26,5 +26,7 @@ class Activity extends Model
     {
         return url('img_activity', $value);
     }
+
+    
 
 }

@@ -7,14 +7,14 @@ use App\Http\Requests\CommentRequest;
 
 
 // Import Model Comment
-use App\Models\Comment;
+use App\Models\CommentActivity;
 
-class CommentController extends Controller
+class CommentActivityController extends Controller
 {
     // READ
     public function index()
     {
-        $comments = Comment::with('activity')->orderBy('id', 'desc')->get();
+        $comments = CommentActivity::with('activity')->orderBy('id', 'desc')->get();
 
         return view('dashboard.comment', compact('comments'));
     }
@@ -39,7 +39,7 @@ class CommentController extends Controller
     // EDIT
     public function edit($id)
     {
-        $comment = Comment::findOrFail($id);
+        $comment = CommentActivity::findOrFail($id);
 
         return view('dashboard_edit.comment_edit', compact('comment'));
     }
@@ -49,7 +49,7 @@ class CommentController extends Controller
     {
         $data = $request->all();
 
-        Comment::findOrFail($id)->update($data);
+        CommentActivity::findOrFail($id)->update($data);
 
         return redirect('/comment-activity')->with('msg', 'Data Komentar Berhasil diedit');
     }
@@ -57,7 +57,7 @@ class CommentController extends Controller
     // DELETE
     public function destroy($id)
     {
-        Comment::destroy($id);
+        CommentActivity::destroy($id);
 
         return redirect('/comment-activity')->with('msg', 'Data Komentar Berhasil dihapus');
     }

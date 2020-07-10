@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-// Koment Activity
-class Comment extends Model
+class CommentActivity extends Model
 {
     protected $touches = ['activity'];
     protected $guarded = ['created_at', 'updated_at'];
