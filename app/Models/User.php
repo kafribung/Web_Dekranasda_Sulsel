@@ -72,6 +72,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Activity');
     }
+
+    // Relation one to many (BLOG)
+    public function blogs()
+    {
+        return $this->hasMany('App\Models\Blog');
+    }
+  
   
 
     // Mutator

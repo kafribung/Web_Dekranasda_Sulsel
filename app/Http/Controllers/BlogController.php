@@ -3,82 +3,87 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// Import BlogRequest
+use App\Http\Requests\BlogRequest;
+// Import Class STR
+use Illuminate\Support\Str;
+// Import Model blog
+use App\Models\Blog;
 
 class BlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // READ
     public function index()
     {
-        //
+        $blogs =  Blog::with('user')->latest()->get();
+
+        return view('dashboard.blog', compact('blogs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // CREATE
     public function create()
     {
-        //
+        return view('dashboard_create.blog_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    // STORE
+    public function store(BlogRequest $request)
     {
-        //
+        $data = $request->all();
+
+        if ($img = $request->file('img')) {
+            $name = time(). '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('img_blogs'), $name);
+
+            $data['img'] = $name;
+        }
+
+        $data['slug'] = Str::slug($request->name);
+
+        $request->user()->blogs()->create($data);
+
+        return redirect('/blog')->with('msg', 'Data Blog Berhasil ditambahkan');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // SHOW
     public function show($id)
     {
-        //
+        return abort('404');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    // EDIT
+    public function edit($slug)
     {
-        //
+        $blog =  Blog::with('user')->where('slug', $slug)->first();
+
+        return view('dashboard_edit.blog_edit', compact('blog'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    // UPDATE
+    public function update(BlogRequest $request, $id)
     {
-        //
+        $data = $request->all();
+
+        if ($img = $request->file('img')) {
+            $name = time(). '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('img_blogs'), $name);
+
+            $data['img'] = $name;
+        }
+
+        $data['slug'] = Str::slug($request->name);
+
+        Blog::findOrFail($id)->update($data);
+
+        return redirect('/blog')->with('msg','Data Blog Berhasil diedit');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    // DELETE
     public function destroy($id)
     {
-        //
+        Blog::destroy($id);
+
+        return redirect('/blog')->with('msg','Data Blog Berhasil dihapus');
     }
+
 }

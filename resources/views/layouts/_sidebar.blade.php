@@ -32,10 +32,19 @@
                   <li class="menu-title">Kegiatan</li>
                   <!-- /.menu-title -->
                   <li class=" {{Request::segment(1) == 'activity' ? 'active' : ''}}">
-                      <a href="/activity"> <i class="menu-icon ti-wand"></i>Kegiatan</a>
+                      <a href="/activity"> <i class="menu-icon ti-wand"></i>Data Kegiatan</a>
                   </li>
                   <li class=" {{Request::segment(1) == 'comment-activity' ? 'active' : ''}}">
-                      <a href="/comment-activity"> <i class="menu-icon ti-comment-alt"></i>Komentar</a>
+                      <a href="/comment-activity"> <i class="menu-icon ti-comment-alt"></i>Komentar Kegiatan</a>
+                  </li>
+
+                  <li class="menu-title">Blog</li>
+                  <!-- /.menu-title -->
+                  <li class=" {{Request::segment(1) == 'blog' ? 'active' : ''}}">
+                      <a href="/blog"> <i class="menu-icon ti-world"></i>Data Blog</a>
+                  </li>
+                  <li class=" {{Request::segment(1) == 'comment-blog' ? 'active' : ''}}">
+                      <a href="/comment-blog"> <i class="menu-icon ti-comment-alt"></i>Komentar Blog</a>
                   </li>
 
               </ul>
