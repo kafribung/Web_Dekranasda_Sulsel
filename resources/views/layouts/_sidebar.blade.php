@@ -34,6 +34,9 @@
                   <li class=" {{Request::segment(1) == 'activity' ? 'active' : ''}}">
                       <a href="/activity"> <i class="menu-icon ti-wand"></i>Kegiatan</a>
                   </li>
+                  <li class=" {{Request::segment(1) == 'comment-activity' ? 'active' : ''}}">
+                      <a href="/comment-activity"> <i class="menu-icon ti-comment-alt"></i>Komentar</a>
+                  </li>
 
               </ul>
           </div>

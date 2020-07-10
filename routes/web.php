@@ -57,7 +57,14 @@ Route::group(['middleware' => 'admin'], function () {
     // Kegiatan
     Route::resource('activity', 'ActivityController');
 
+    // Koment Kegiatan
+    Route::get('comment-activity', 'CommentController@index');
+    Route::get('comment-activity/{id}/edit', 'CommentController@edit');
+    Route::put('comment-activity/{id}', 'CommentController@update');
+    Route::delete('comment-activity/{id}', 'CommentController@destroy');
 
+    // Blog
+    Route::resource('blog', 'BlogController');
 });
 
 Auth::routes();

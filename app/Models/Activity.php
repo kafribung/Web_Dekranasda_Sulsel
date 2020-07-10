@@ -15,6 +15,12 @@ class Activity extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    // Relation  one to  many (COMMENT)
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
     // Mutator
     public function getImgAttribute($value)
     {
