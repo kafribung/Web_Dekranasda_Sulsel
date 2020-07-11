@@ -15,6 +15,12 @@ class Blog extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    // Relation  one to  many (COMMENT Blog)
+    public function comments()
+    {
+        return $this->hasMany('App\Models\CommentBlog');
+    }
+
     
     // Mutator
     public function getImgAttribute($value)

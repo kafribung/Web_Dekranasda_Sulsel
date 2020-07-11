@@ -16,7 +16,7 @@ class CommentActivityController extends Controller
     {
         $comments = CommentActivity::with('activity')->orderBy('id', 'desc')->get();
 
-        return view('dashboard.comment', compact('comments'));
+        return view('dashboard.commentActivity', compact('comments'));
     }
     // CREATE
     public function create()
@@ -41,7 +41,7 @@ class CommentActivityController extends Controller
     {
         $comment = CommentActivity::findOrFail($id);
 
-        return view('dashboard_edit.comment_edit', compact('comment'));
+        return view('dashboard_edit.commentActivity_edit', compact('comment'));
     }
 
     // UPDATE

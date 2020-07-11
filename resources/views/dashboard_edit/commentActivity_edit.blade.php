@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Edit Komentar | Dekranasda SULSEL')
+@section('title', 'Edit Komentar Kegiatan| Dekranasda SULSEL')
 @section('content')
 
 <!-- Content -->
@@ -12,7 +12,7 @@
                 <div class="card-body ">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Edit Data Komentar</strong>
+                            <strong class="card-title">Edit Data Komentar Kegiatan</strong>
                         </div>
                         <div class="card-body">
                             <form action="/comment-activity/{{ $comment->id }}" method="POST" enctype="multipart/form-data">

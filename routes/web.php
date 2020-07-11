@@ -65,6 +65,12 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Blog
     Route::resource('blog', 'BlogController');
+
+    // Koment Blog
+    Route::get('comment-blog', 'CommentBlogController@index');
+    Route::get('comment-blog/{id}/edit', 'CommentBlogController@edit');
+    Route::put('comment-blog/{id}', 'CommentBlogController@update');
+    Route::delete('comment-blog/{id}', 'CommentBlogController@destroy');
 });
 
 Auth::routes();
