@@ -50,7 +50,7 @@
                                             <a href="{{$member->website}}" target="_blank">{{$member->website}}</a>
                                         </td>
                                         <td>{{$member->address}}</td>
-                                        <td>{!! Str::limit($member->description, 30) !!}</td>
+                                        <td>{!! Str::limit($member->description, 10, '..') !!}</td>
                                         <td>
                                             <a href="/member-img/{{$member->slug}}"
                                                 class="btn btn-outline-dark btn-sm ">

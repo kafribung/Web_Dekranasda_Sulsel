@@ -27,18 +27,15 @@
                                     <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
-
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->

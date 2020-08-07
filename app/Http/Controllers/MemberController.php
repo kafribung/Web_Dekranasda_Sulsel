@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 // Impoer Class MemberRequest
 use App\Http\Requests\MemberRequest;
 // Import Class STR
 use Illuminate\Support\Str;
-
 // Import DB members
 use App\Models\Member;
 
@@ -17,7 +15,6 @@ class MemberController extends Controller
     public function index()
     {
         $members = Member::with('user')->latest()->get();
-
         return view('dashboard.member', compact('members'));
     }
 
@@ -31,11 +28,8 @@ class MemberController extends Controller
     public function store(MemberRequest $request)
     {
         $data = $request->all();
-
         $data['slug'] = Str::slug($request->name);
-
         $request->user()->members()->create($data);
-
         return redirect('/member')->with('msg', 'Data anggota berhasil ditambhakan');
     }
 
@@ -65,6 +59,8 @@ class MemberController extends Controller
     // DELETE
     public function destroy($id)
     {
+        $member = Member::findOrFail($id);
+        $this->authorize('isOwner', $member);
         Member::destroy($id);
         return redirect('/member')->with('msg', 'Data anggota berhasil dihapus');
     }

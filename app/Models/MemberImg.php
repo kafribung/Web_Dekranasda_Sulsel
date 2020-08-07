@@ -22,17 +22,6 @@ class MemberImg extends Model
         return $this->belongsTo('App\Models\Member');
     }
 
-    // isOwner
-    public function isOwner()
-    {
-        $user = Auth::check();
-
-        if ($user) {
-            return Auth::user()->id == $this->user->id;
-        }
-        return false;
-    }
-
     // Mutator IMG
     public function getTakeImgAttribute()
     {

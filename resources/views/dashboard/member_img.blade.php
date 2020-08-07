@@ -17,13 +17,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="box-title text-center">Galeri {{$member->name}}</h4>
-
-                            @if ($member->isOwner())
+                            @can('isOwner', $member)
                             <a href="/member-img/create/{{$member->slug}}"
-                                class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
-                            @endif
+                                class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i>
+                            </a>
+                            @endcan
                         </div>
-
                         <div class="table-stats">
                             <table class="table table-hover">
                                 <thead>
@@ -47,37 +46,31 @@
                                         </td>
                                         <td>{{$memberImg->member->name}}</td>
                                         <td>
-                                            @if ($member->isOwner())
+                                            @can('isOwner', $memberImg)
                                             <a href="/member-img/{{$memberImg->id}}/edit"
                                                 class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
-
                                             <form action="/member-img/{{$memberImg->id}}" method="POST"
                                                 class="d-inline-flex">
                                                 @csrf
                                                 @method('DELETE')
-
                                                 <button type="submit"
                                                     onclick="return confirm('Hapus Data {{$memberImg->img}}?')"
-                                                    class="btn btn-outline-danger btn-sm"><i
-                                                        class="fa fa-trash"></i></button>
+                                                    class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i>
+                                                </button>
                                             </form>
-                                            @endif
+                                            @endcan
                                         </td>
                                     </tr>
                                     @empty
                                     <td class="text-center">Gallery {{$member->name}} masih kosong</td>
                                     @endforelse
-
                                 </tbody>
                             </table>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->

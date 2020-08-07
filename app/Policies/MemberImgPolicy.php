@@ -2,10 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\{User, Member};
+use App\Models\{User, MemberImg};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class MemberPolicy
+class MemberImgPolicy
 {
     use HandlesAuthorization;
 
@@ -19,8 +19,8 @@ class MemberPolicy
         //
     }
 
-    public function isOwner(User $user, Member $member)
+    public function isOwner(User $user, MemberImg $memberImg)
     {
-        return $user->id == $member->user_id;
+        return $user->id == $memberImg->user_id;
     }
 }

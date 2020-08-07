@@ -19,70 +19,78 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
-                                    <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" autofocus autocomplete="off" placeholder="Input Nama" value="{{old('name')}}">
+                                    <input id="name" name="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" autofocus
+                                        autocomplete="off" placeholder="Input Nama" value="{{old('name')}}">
 
                                     @error('name')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="product" class="control-label mb-1">Produk</label>
-                                    <input id="product" name="product" type="text" class="form-control @error('product') is-invalid @enderror"   autocomplete="off" placeholder="Input Produk" value="{{old('product')}}">
-
+                                    <input id="product" name="product" type="text"
+                                        class="form-control @error('product') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Produk" value="{{old('product')}}">
                                     @if ($errors->has('product'))
-                                        <p class="alert alert-danger">{{$errors->first('product')}}</p>
+                                    <p class="alert alert-danger">{{$errors->first('product')}}</p>
                                     @endif
                                 </div>
 
                                 <div class="form-group">
                                     <label for="contact" class="control-label mb-1">Kontak</label>
-                                    <input id="contact" name="contact" type="number" class="form-control @error('contact') is-invalid @enderror"   autocomplete="off" placeholder="Input Kontak" value="{{old('contact')}}">
+                                    <input id="contact" name="contact" type="number"
+                                        class="form-control @error('contact') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Kontak" value="{{old('contact')}}">
 
                                     @error('contact')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="website" class="control-label mb-1">Website</label>
-                                    <input id="website" name="website" type="url" class="form-control @error('website') is-invalid @enderror"   autocomplete="off" placeholder="Input Website (Boleh Kosong)" value="{{old('website')}}">
+                                    <input id="website" name="website" type="url"
+                                        class="form-control @error('website') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Website (Boleh Kosong)" value="{{old('website')}}">
 
                                     @error('website')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
-                                
                                 <div class="form-group">
                                     <label for="address" class="control-label mb-1">Alamat</label>
-                                    <textarea id="address" name="address" class="form-control  @error('address') is-invalid @enderror" placeholder="Input Alamat">{{old('address')}}</textarea>
+                                    <textarea id="address" name="address"
+                                        class="form-control  @error('address') is-invalid @enderror"
+                                        placeholder="Input Alamat">{{old('address')}}</textarea>
 
                                     @error('address')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description" class="control-label mb-1">Deskripsi</label>
-                                    <textarea id="description" name="description" class="form-control ckeditor @error('description') is-invalid @enderror" placeholder="Input Deskripsi">{{old('description')}}</textarea>
+                                    <textarea id="description" name="description"
+                                        class="form-control ckeditor @error('description') is-invalid @enderror"
+                                        placeholder="Input Deskripsi">{{old('description')}}</textarea>
 
                                     @error('description')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->
@@ -102,4 +110,3 @@
 </script>
 @endpush
 @endsection
-
