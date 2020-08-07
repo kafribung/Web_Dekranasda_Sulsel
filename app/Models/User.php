@@ -79,10 +79,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Blog');
     }
 
-
     // Mutator
     public function getTakeImgAttribute()
     {
         return url('storage', $this->img);
+    }
+
+    // Autorize King
+    public function king()
+    {
+        return $this->email == 'admin@dekranasda.mks';
     }
 }
