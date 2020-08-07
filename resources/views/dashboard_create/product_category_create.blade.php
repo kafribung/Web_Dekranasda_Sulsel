@@ -19,24 +19,21 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Kategori</label>
-                                    <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" autofocus autocomplete="off" placeholder="Input Kategori" value="{{old('name')}}">
+                                    <input id="name" name="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" autofocus
+                                        autocomplete="off" placeholder="Input Kategori" value="{{old('name')}}">
 
                                     @error('name')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
-                                </div>
-
+                                <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->
@@ -56,4 +53,3 @@
 </script>
 @endpush
 @endsection
-
