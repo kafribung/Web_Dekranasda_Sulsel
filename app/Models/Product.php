@@ -28,21 +28,9 @@ class Product extends Model
         return $this->belongsTo('App\Models\ProductCategory');
     }
 
-     // Relation one to many (PRODUCT IMG)
-     public function productsImgs()
-     {
-         return $this->hasMany('App\Models\ProductImg');
-     }
-
-     // isOwner
-    public function isOwner()
+    // Relation one to many (PRODUCT IMG)
+    public function productsImgs()
     {
-        $user = Auth::check();
-
-        if ($user) {
-            return Auth::user()->id == $this->user_id;
-        } return false;
+        return $this->hasMany('App\Models\ProductImg');
     }
-
-    
 }

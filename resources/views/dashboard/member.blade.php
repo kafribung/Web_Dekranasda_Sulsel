@@ -18,7 +18,8 @@
                         <div class="card-header">
                             <h4 class="box-title text-center">Data Anggota</h4>
                             <a href="/member/create" class="btn btn-outline-primary btn-sm float-right"><i
-                                    class="fa fa-plus"></i></a>
+                                    class="fa fa-plus"></i>
+                            </a>
                         </div>
                         <div class="table-stats">
                             <table class="table table-hover">

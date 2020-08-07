@@ -18,7 +18,8 @@
                         <div class="card-header">
                             <h4 class="box-title text-center">Kategori Produk </h4>
                             <a href="/product-category/create" class="btn btn-outline-primary btn-sm float-right"><i
-                                    class="fa fa-plus"></i></a>
+                                    class="fa fa-plus"></i>
+                            </a>
                         </div>
                         <div class="table-stats">
                             <table class="table table-hover">
@@ -35,19 +36,17 @@
                                     @endphp
                                     @forelse ($productCategories as $category)
                                     <tr>
-                                        <td>{{$angkaAwal}}</td>
+                                        <td>{{$angkaAwal++}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>
-
                                             @can('isOwner', $category)
                                             <a href="/product-category/{{$category->id}}/edit"
-                                                class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
-
+                                                class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i>
+                                            </a>
                                             <form action="/product-category/{{$category->id}}" method="POST"
                                                 class="d-inline-flex">
                                                 @csrf
                                                 @method('DELETE')
-
                                                 <button type="submit"
                                                     onclick="return confirm('Hapus Data {{$category->name}}?')"
                                                     class="btn btn-outline-danger btn-sm"><i
@@ -56,13 +55,9 @@
                                             @endcan
                                         </td>
                                     </tr>
-                                    @php
-                                    $angkaAwal++
-                                    @endphp
                                     @empty
                                     <td class="text-center">Kategori Produk Masih Kosong</td>
                                     @endforelse
-
                                 </tbody>
                             </table>
                         </div>

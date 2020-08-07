@@ -6,7 +6,6 @@
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-body ">

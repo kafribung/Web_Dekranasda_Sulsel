@@ -20,7 +20,9 @@
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
-                                    <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" autocomplete="off" placeholder="Input Nama" value="{{old('name') ? old('name') : $product->name}}">
+                                    <input id="name" name="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Nama" value="{{old('name') ? old('name') : $product->name}}">
 
                                     @error('name')
                                     <p class="alert alert-danger">{{$message}}</p>
@@ -29,7 +31,10 @@
 
                                 <div class="form-group">
                                     <label for="price" class="control-label mb-1">Harga</label>
-                                    <input id="price" name="price" type="number" class="form-control @error('price') is-invalid @enderror" autocomplete="off" placeholder="Input Harga" value="{{old('price') ? old('price') : $product->price}}">
+                                    <input id="price" name="price" type="number"
+                                        class="form-control @error('price') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Harga"
+                                        value="{{old('price') ? old('price') : $product->price}}">
 
                                     @if ($errors->has('price'))
                                     <p class="alert alert-danger">{{$errors->first('price')}}</p>
@@ -38,7 +43,10 @@
 
                                 <div class="form-group">
                                     <label for="address" class="control-label mb-1">Asal Daerah</label>
-                                    <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror" autocomplete="off" placeholder="Input Asal Daerah" value="{{old('address') ? old('address') : $product->address}}">
+                                    <input id="address" name="address" type="text"
+                                        class="form-control @error('address') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Asal Daerah"
+                                        value="{{old('address') ? old('address') : $product->address}}">
 
                                     @error('address')
                                     <p class="alert alert-danger">{{$message}}</p>
@@ -48,13 +56,14 @@
                                 <div class="form-group">
                                     <label for="member_id" class="control-label mb-1">Anggota</label>
 
-                                    <select name="member_id" id="member_id" class="form-control @error('member_id') is-invalid @enderror">
+                                    <select name="member_id" id="member_id"
+                                        class="form-control @error('member_id') is-invalid @enderror">
                                         <option value="" selected disabled>~Pilih Anggota~</option>
                                         @foreach ($members as $member)
-                                        <option {{$product->member_id == $member->id ? 'selected' : ''}} value="{{$member->id}}">{{$member->name}}</option>
+                                        <option {{$product->member_id == $member->id ? 'selected' : ''}}
+                                            value="{{$member->id}}">{{$member->name}}</option>
                                         @endforeach
                                     </select>
-
 
                                     @error('member_id')
                                     <p class="alert alert-danger">{{$message}}</p>
@@ -63,12 +72,12 @@
 
                                 <div class="form-group">
                                     <label for="product_category_id" class="control-label mb-1">Kategori</label>
-
-                                    <select name="product_category_id" id="product_category_id" class="form-control @error('product_category_id') is-invalid @enderror">
+                                    <select name="product_category_id" id="product_category_id"
+                                        class="form-control @error('product_category_id') is-invalid @enderror">
                                         <option value="" selected disabled>~Pilih Kategori~</option>
-
                                         @foreach ($productCategories as $category)
-                                        <option {{$product->product_category_id == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->name}}</option>
+                                        <option {{$product->product_category_id == $category->id ? 'selected' : ''}}
+                                            value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
 
@@ -79,7 +88,9 @@
 
                                 <div class="form-group">
                                     <label for="description" class="control-label mb-1">Deskripsi</label>
-                                    <textarea id="description" name="description" class="form-control ckeditor @error('description') is-invalid @enderror" placeholder="Input Deskripsi">{{old('description') ? old('description') : $product->description}}</textarea>
+                                    <textarea id="description" name="description"
+                                        class="form-control ckeditor @error('description') is-invalid @enderror"
+                                        placeholder="Input Deskripsi">{{old('description') ? old('description') : $product->description}}</textarea>
 
                                     @error('description')
                                     <p class="alert alert-danger">{{$message}}</p>
@@ -89,14 +100,12 @@
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-md btn-warning btn-block">Edit Data</button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->
@@ -113,7 +122,6 @@
         .catch(error => {
             console.error(error);
         });
-
 </script>
 @endpush
 @endsection

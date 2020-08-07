@@ -8,7 +8,7 @@
     <div class="animated fadeIn">
 
         @if (session('msg'))
-            <p class="alert alert-info">{{session('msg')}}</p>
+        <p class="alert alert-info">{{session('msg')}}</p>
         @endif
 
         <div class="row">
@@ -16,11 +16,12 @@
                 <div class="card-body">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="box-title text-center">Galeri {{$product->name}}</h4>
-
-                            @if ($product->isOwner())
-                                <a href="/product-img/create/{{$product->slug}}" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
-                            @endif
+                            <h4 class="box-title text-center">Produk {{$product->name}}</h4>
+                            @can('isOwner', $product)
+                            <a href="/product-img/create/{{$product->slug}}"
+                                class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i>
+                            </a>
+                            @endcan
                         </div>
 
                         <div class="table-stats">
@@ -35,52 +36,46 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $angkaAwal =  1
+                                    $angkaAwal = 1
                                     @endphp
                                     @forelse ($product->productsImgs as $productImg)
                                     <tr>
-                                        <td>{{$angkaAwal}}</td>
+                                        <td>{{$angkaAwal++}}</td>
                                         <td>
-                                            <img src="{{url($productImg->img)}}" alt="Error" title="Gambar {{$productImg->product->name}}" width="800px" height="100px">
+                                            <img src="{{url($productImg->takeImg)}}" alt="Error"
+                                                title="Gambar {{$productImg->product->name}}" width="150px">
                                         </td>
                                         <td>{{$productImg->product->name}}</td>
-                            
                                         <td>
-                                            @if ($product->isOwner())
-                                                <a href="/product-img/{{$productImg->id}}/edit" class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
-                                
-                                                <form action="/product-img/{{$productImg->id}}" method="POST" class="d-inline-flex">
-                                                    @csrf
-                                                    @method('DELETE')
-                                
-                                                    <button type="submit" onclick="return confirm('Hapus Data {{$productImg->img}}?')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                </form>
-                                            @endif
+                                            @can('isOwner', $productImg)
+                                            <a href="/product-img/{{$productImg->id}}/edit"
+                                                class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i>
+                                            </a>
+                                            <form action="/product-img/{{$productImg->id}}" method="POST"
+                                                class="d-inline-flex">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    onclick="return confirm('Hapus Data {{$productImg->img}}?')"
+                                                    class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                            @endcan
                                         </td>
                                     </tr>
-                                    @php
-                                        $angkaAwal++
-                                    @endphp
                                     @empty
-                                        <td class="text-center">Gallery {{$product->name}} masih kosong</td>
+                                    <td class="text-center">Gallery {{$product->name}} masih kosong</td>
                                     @endforelse
-                            
                                 </tbody>
                             </table>
-                           
                         </div>
-                      
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->
 </div>
 <!-- /.content -->
-
-
-    
 @endsection

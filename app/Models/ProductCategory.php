@@ -21,14 +21,4 @@ class ProductCategory extends Model
     {
         return $this->hasMany('App\Models\Product');
     }
-
-    // isOwner
-    public function isOwner()
-    {
-        $user = Auth::check();
-
-        if ($user)
-            return Auth::user()->id == $this->user_id;
-        return false;
-    }
 }

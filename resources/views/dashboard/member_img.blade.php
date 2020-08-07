@@ -76,7 +76,4 @@
     <!-- .animated -->
 </div>
 <!-- /.content -->
-
-
-
 @endsection

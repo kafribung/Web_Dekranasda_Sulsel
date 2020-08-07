@@ -6,7 +6,6 @@
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-body ">
@@ -27,9 +26,7 @@
                                     <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
-                                </div>
+                                <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
                             </form>
                         </div>
                     </div>
@@ -41,17 +38,4 @@
     <!-- .animated -->
 </div>
 <!-- /.content -->
-@push('after_script')
-<script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create( document.querySelector( '.ckeditor' ) )
-        .then( editor => {
-                console.log( editor );
-        } )
-        .catch( error => {
-                console.error( error );
-        } );
-</script>
-@endpush
 @endsection

@@ -6,7 +6,6 @@
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-body ">
@@ -19,82 +18,89 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
-                                    <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror" autofocus  autocomplete="off" placeholder="Input Nama" value="{{old('name')}}">
+                                    <input id="name" name="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" autofocus
+                                        autocomplete="off" placeholder="Input Nama" value="{{old('name')}}">
 
                                     @error('name')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="price" class="control-label mb-1">Harga</label>
-                                    <input id="price" name="price" type="number" class="form-control @error('price') is-invalid @enderror"   autocomplete="off" placeholder="Input Harga" value="{{old('price')}}">
+                                    <input id="price" name="price" type="number"
+                                        class="form-control @error('price') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Harga" value="{{old('price')}}">
 
                                     @if ($errors->has('price'))
-                                        <p class="alert alert-danger">{{$errors->first('price')}}</p>
+                                    <p class="alert alert-danger">{{$errors->first('price')}}</p>
                                     @endif
                                 </div>
 
                                 <div class="form-group">
                                     <label for="address" class="control-label mb-1">Asal Daerah</label>
-                                    <input id="address" name="address" type="text" class="form-control @error('address') is-invalid @enderror"   autocomplete="off" placeholder="Input Asal Daerah" value="{{old('address')}}">
+                                    <input id="address" name="address" type="text"
+                                        class="form-control @error('address') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Asal Daerah" value="{{old('address')}}">
 
                                     @error('address')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="member_id" class="control-label mb-1">Anggota</label>
 
-                                    <select name="member_id" id="member_id" class="form-control @error('member_id') is-invalid @enderror">
+                                    <select name="member_id" id="member_id"
+                                        class="form-control @error('member_id') is-invalid @enderror">
                                         <option value="" selected disabled>~Pilih Anggota~</option>
                                         @foreach ($members as $member)
-                                            <option {{old('member_id') == $member->id ? 'selected' : ''}} value="{{$member->id}}">{{$member->name}}</option>
+                                        <option {{old('member_id') == $member->id ? 'selected' : ''}}
+                                            value="{{$member->id}}">{{$member->name}}</option>
                                         @endforeach
                                     </select>
 
                                     @error('member_id')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="product_category_id" class="control-label mb-1">Kategori</label>
 
-                                    <select name="product_category_id" id="product_category_id" class="form-control @error('product_category_id') is-invalid @enderror">
+                                    <select name="product_category_id" id="product_category_id"
+                                        class="form-control @error('product_category_id') is-invalid @enderror">
                                         <option value="" selected disabled>~Pilih Kategori~</option>
-                                        
+
                                         @foreach ($productCategories as $category)
-                                            <option {{old('product_category_id') == $category->id ? 'selected' : ''}} value="{{$category->id}}">{{$category->name}}</option>
+                                        <option {{old('product_category_id') == $category->id ? 'selected' : ''}}
+                                            value="{{$category->id}}">{{$category->name}}</option>
                                         @endforeach
                                     </select>
 
                                     @error('product_category_id')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description" class="control-label mb-1">Deskripsi</label>
-                                    <textarea id="description" name="description" class="form-control ckeditor @error('description') is-invalid @enderror" placeholder="Input Deskripsi">{{old('description')}}</textarea>
+                                    <textarea id="description" name="description"
+                                        class="form-control ckeditor @error('description') is-invalid @enderror"
+                                        placeholder="Input Deskripsi">{{old('description')}}</textarea>
 
                                     @error('description')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
-                                </div>
-
+                                <button type="submit" class="btn btn-md btn-info btn-block">Tambah Data</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->
@@ -114,4 +120,3 @@
 </script>
 @endpush
 @endsection
-

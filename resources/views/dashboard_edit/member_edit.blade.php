@@ -18,7 +18,6 @@
                             <form action="/member/{{$member->id}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
                                     <input id="name" name="name" type="text"

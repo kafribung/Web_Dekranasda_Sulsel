@@ -20,7 +20,6 @@
                             <a href="/admin/create" class="btn btn-outline-primary btn-sm float-right"><i
                                     class="fa fa-plus"></i></a>
                         </div>
-
                         <div class="table-stats">
                             <table class="table table-hover">
                                 <thead>
@@ -39,7 +38,7 @@
                                     @endphp
                                     @forelse ($admins as $admin)
                                     <tr>
-                                        <td>{{$angkaAwal}}</td>
+                                        <td>{{$angkaAwal++}}</td>
                                         <td class="avatar">
                                             <div class="round-img">
                                                 <img class="rounded-circle" src="{{url($admin->takeImg)}}" alt="Error"
@@ -49,7 +48,6 @@
                                         <td>{{$admin->name}}</td>
                                         <td>{{$admin->email}}</td>
                                         <td>{{$admin->role == 1 ? 'Admin' : 'Ilegal'}}</td>
-
                                         <td>
                                             <a href="/admin/{{$admin->email}}/edit"
                                                 class="btn btn-outline-warning btn-sm ">
@@ -60,34 +58,24 @@
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     onclick="return confirm('Hapus Data {{$admin->name}}?')"
-                                                    class="btn btn-outline-danger btn-sm"><i
-                                                        class="fa fa-trash"></i></button>
+                                                    class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i>
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
-                                    @php
-                                    $angkaAwal++
-                                    @endphp
                                     @empty
                                     <td class="text-center">Data Admin Masih Kosong</td>
                                     @endforelse
-
                                 </tbody>
                             </table>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->
 </div>
 <!-- /.content -->
-
-
-
 @endsection

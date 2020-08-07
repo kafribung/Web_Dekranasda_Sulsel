@@ -17,9 +17,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="box-title text-center">Data Kegiatan</h4>
-                            <a href="/activity/create" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
+                            <a href="/activity/create" class="btn btn-outline-primary btn-sm float-right">
+                                <i class="fa fa-plus"></i>
+                            </a>
                         </div>
-
                         <div class="table-stats">
                             <table class="table table-hover">
                                 <thead>
@@ -40,19 +41,25 @@
                                     <tr>
                                         <td>{{$angkaAwal}}</td>
                                         <td>
-                                            <img src="{{ url($activity->img) }}" title="Gambar {{ $activity->name }}" alt="error" width="80" height="80">
+                                            <img src="{{ url($activity->img) }}" title="Gambar {{ $activity->name }}"
+                                                alt="error" width="80" height="80">
                                         </td>
                                         <td>{{$activity->name}}</td>
                                         <td>{{$activity->tgl}}</td>
                                         <td>{!! Str::limit($activity->description, 30) !!}</td>
 
                                         <td>
-                                            <a href="/activity/{{$activity->slug}}/edit" class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
-                                            <form action="/activity/{{$activity->id}}" method="POST" class="d-inline-flex">
+                                            <a href="/activity/{{$activity->slug}}/edit"
+                                                class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
+                                            <form action="/activity/{{$activity->id}}" method="POST"
+                                                class="d-inline-flex">
                                                 @csrf
                                                 @method('DELETE')
 
-                                                <button type="submit" onclick="return confirm('Hapus Data {{$activity->name}}?')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                <button type="submit"
+                                                    onclick="return confirm('Hapus Data {{$activity->name}}?')"
+                                                    class="btn btn-outline-danger btn-sm"><i
+                                                        class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
                                     </tr>

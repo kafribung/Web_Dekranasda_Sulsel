@@ -41,18 +41,4 @@
     <!-- .animated -->
 </div>
 <!-- /.content -->
-@push('after_script')
-<script src="https://cdn.ckeditor.com/ckeditor5/19.1.1/classic/ckeditor.js"></script>
-<script>
-    ClassicEditor
-        .create(document.querySelector('.ckeditor'))
-        .then(editor => {
-            console.log(editor);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-</script>
-@endpush
 @endsection

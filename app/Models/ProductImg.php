@@ -3,13 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Auth;
 
 class ProductImg extends Model
 {
     protected $touches = ['user', 'product'];
     protected $guarded = ['created_at', 'updated_at'];
-    
+
     // Relation many to one (USER)
     public function user()
     {
@@ -21,21 +20,9 @@ class ProductImg extends Model
     {
         return $this->belongsTo('App\Models\Product');
     }
-
-    // isOwner
-    public function isOwner()
-    {
-        $user = Auth::check();
-
-        if ($user) {
-            return Auth::user()->id == $this->user->id;
-        } return false;
-    }
-
-
     // Mutator
-    public function getImgAttribute($value)
+    public function getTakeImgAttribute()
     {
-        return url('img_products', $value);
+        return url('storage', $this->img);
     }
 }
