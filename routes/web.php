@@ -78,6 +78,6 @@ Route::get('mattama', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('mattama', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -22,11 +22,8 @@ class Activity extends Model
     }
 
     // Mutator
-    public function getImgAttribute($value)
+    public function getTakeImgAttribute()
     {
-        return url('img_activity', $value);
+        return url('storage', $this->img);
     }
-
-    
-
 }

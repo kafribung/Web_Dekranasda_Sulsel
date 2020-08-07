@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
-
-
 // Import Model Comment
 use App\Models\CommentActivity;
 
@@ -25,7 +22,7 @@ class CommentActivityController extends Controller
     }
 
     // STORE
-    public function store(Request $request)
+    public function store(ReCommentRequest $request)
     {
         //
     }
@@ -40,7 +37,6 @@ class CommentActivityController extends Controller
     public function edit($id)
     {
         $comment = CommentActivity::findOrFail($id);
-
         return view('dashboard_edit.commentActivity_edit', compact('comment'));
     }
 
@@ -48,9 +44,7 @@ class CommentActivityController extends Controller
     public function update(CommentRequest $request, $id)
     {
         $data = $request->all();
-
         CommentActivity::findOrFail($id)->update($data);
-
         return redirect('/comment-activity')->with('msg', 'Data Komentar Berhasil diedit');
     }
 
@@ -58,7 +52,6 @@ class CommentActivityController extends Controller
     public function destroy($id)
     {
         CommentActivity::destroy($id);
-
         return redirect('/comment-activity')->with('msg', 'Data Komentar Berhasil dihapus');
     }
 }

@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 // Import ActivityRequest
 use App\Http\Requests\ActivityRequest;
 // Import Class STR
 use Illuminate\Support\Str;
 // Import Model Activity
 use App\Models\Activity;
+use Illuminate\Support\Facades\Storage;
 
 class ActivityController extends Controller
 {
     // READ
     public function index()
     {
-        $activities =  Activity::with('user')->latest()->get();
-
+        $activities =  Activity::with('user', 'comments')->latest()->get();
         return view('dashboard.activity', compact('activities'));
     }
 
@@ -30,18 +29,11 @@ class ActivityController extends Controller
     public function store(ActivityRequest $request)
     {
         $data = $request->all();
-
         if ($img = $request->file('img')) {
-            $name = time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_activity'), $name);
-
-            $data['img'] = $name;
+            $data['img'] = $request->file('img')->storeAs('img_activities', time() . '.' . $img->getClientOriginalExtension());
         }
-
         $data['slug'] = Str::slug($request->name);
-
         $request->user()->activities()->create($data);
-
         return redirect('/activity')->with('msg', 'Data Kegiatan Berhasil ditambahkan');
     }
 
@@ -55,7 +47,7 @@ class ActivityController extends Controller
     public function edit($slug)
     {
         $activity =  Activity::with('user')->where('slug', $slug)->first();
-
+        $this->authorize('isOwner', $activity);
         return view('dashboard_edit.activity_edit', compact('activity'));
     }
 
@@ -63,27 +55,23 @@ class ActivityController extends Controller
     public function update(ActivityRequest $request, $id)
     {
         $data = $request->all();
-
+        $activity = Activity::findOrFail($id);
         if ($img = $request->file('img')) {
-            $name = time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_activity'), $name);
-
-            $data['img'] = $name;
+            Storage::delete($activity->img);
+            $data['img'] = $request->file('img')->storeAs('img_activities', time() . '.' . $img->getClientOriginalExtension());
         }
-
         $data['slug'] = Str::slug($request->name);
-
-        Activity::findOrFail($id)->update($data);
-
-        return redirect('/activity')->with('msg','Data Kegiatan Berhasil diedit');
+        $activity->update($data);
+        return redirect('/activity')->with('msg', 'Data Kegiatan Berhasil diedit');
     }
 
     // DELETE
     public function destroy($id)
     {
+        $activity = Activity::findOrFail($id);
+        $this->authorize('isOwner', $activity);
+        Storage::delete($activity->img);
         Activity::destroy($id);
-
-        return redirect('/activity')->with('msg','Data Kegiatan Berhasil dihapus');
+        return redirect('/activity')->with('msg', 'Data Kegiatan Berhasil dihapus');
     }
-
 }
