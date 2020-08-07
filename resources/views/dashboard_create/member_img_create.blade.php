@@ -19,10 +19,12 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="img" class="control-label mb-1">Foto</label>
-                                    <input id="img" name="img" type="file" accept="image/*" class="form-control @error('img') is-invalid @enderror" autofocus placeholder="Input Foto">
+                                    <input id="img" name="img" type="file" accept="image/*"
+                                        class="form-control @error('img') is-invalid @enderror" autofocus
+                                        placeholder="Input Foto">
 
                                     @error('img')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
@@ -56,4 +58,3 @@
 </script>
 @endpush
 @endsection
-

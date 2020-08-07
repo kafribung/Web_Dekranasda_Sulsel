@@ -8,7 +8,7 @@
     <div class="animated fadeIn">
 
         @if (session('msg'))
-            <p class="alert alert-info">{{session('msg')}}</p>
+        <p class="alert alert-info">{{session('msg')}}</p>
         @endif
 
         <div class="row">
@@ -19,7 +19,8 @@
                             <h4 class="box-title text-center">Galeri {{$member->name}}</h4>
 
                             @if ($member->isOwner())
-                                <a href="/member-img/create/{{$member->slug}}" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
+                            <a href="/member-img/create/{{$member->slug}}"
+                                class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
                             @endif
                         </div>
 
@@ -35,41 +36,43 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $angkaAwal =  1
+                                    $angkaAwal = 1
                                     @endphp
                                     @forelse ($member->membersImgs as $memberImg)
                                     <tr>
-                                        <td>{{$angkaAwal}}</td>
+                                        <td>{{$angkaAwal++}}</td>
                                         <td>
-                                            <img src="{{url($memberImg->img)}}" alt="Error" title="Gambar {{$memberImg->member->name}}" width="100" height="100">
+                                            <img src="{{url($memberImg->takeImg)}}" alt="Error"
+                                                title="Gambar {{$memberImg->member->name}}" width="150">
                                         </td>
                                         <td>{{$memberImg->member->name}}</td>
-                            
                                         <td>
                                             @if ($member->isOwner())
-                                                <a href="/member-img/{{$memberImg->id}}/edit" class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
-                                
-                                                <form action="/member-img/{{$memberImg->id}}" method="POST" class="d-inline-flex">
-                                                    @csrf
-                                                    @method('DELETE')
-                                
-                                                    <button type="submit" onclick="return confirm('Hapus Data {{$memberImg->img}}?')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                                </form>
+                                            <a href="/member-img/{{$memberImg->id}}/edit"
+                                                class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
+
+                                            <form action="/member-img/{{$memberImg->id}}" method="POST"
+                                                class="d-inline-flex">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit"
+                                                    onclick="return confirm('Hapus Data {{$memberImg->img}}?')"
+                                                    class="btn btn-outline-danger btn-sm"><i
+                                                        class="fa fa-trash"></i></button>
+                                            </form>
                                             @endif
                                         </td>
                                     </tr>
-                                    @php
-                                        $angkaAwal++
-                                    @endphp
                                     @empty
-                                        <td class="text-center">Gallery {{$member->name}} masih kosong</td>
+                                    <td class="text-center">Gallery {{$member->name}} masih kosong</td>
                                     @endforelse
-                            
+
                                 </tbody>
                             </table>
-                           
+
                         </div>
-                      
+
                     </div>
                 </div>
             </div>
@@ -82,5 +85,5 @@
 <!-- /.content -->
 
 
-    
+
 @endsection

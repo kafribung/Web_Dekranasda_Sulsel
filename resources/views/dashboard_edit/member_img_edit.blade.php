@@ -6,7 +6,6 @@
 <div class="content">
     <!-- Animated -->
     <div class="animated fadeIn">
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-body ">
@@ -20,25 +19,23 @@
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="img" class="control-label mb-1">Foto</label>
-                                    <img src="{{url($memberImg->img)}}" alt="Error" title="Gambar {{$memberImg->member->name}}" width="80" height="80">
-                                    <input id="img" name="img" type="file" accept="image/*" class="form-control @error('img') is-invalid @enderror" autofocus placeholder="Input Foto">
+                                    <img src="{{url($memberImg->takeImg)}}" alt="Error"
+                                        title="Gambar {{$memberImg->member->name}}" width="150">
+                                    <input id="img" name="img" type="file" accept="image/*"
+                                        class="form-control @error('img') is-invalid @enderror" autofocus
+                                        placeholder="Input Foto">
 
                                     @error('img')
                                     <p class="alert alert-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-md btn-info btn-block">Edit Data</button>
-                                </div>
-
+                                <button type="submit" class="btn btn-md btn-info btn-block">Edit Data</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->

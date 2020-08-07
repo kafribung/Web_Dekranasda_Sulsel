@@ -1,8 +1,9 @@
- <!-- Header-->
- <header id="header" class="header">
+<!-- Header-->
+<header id="header" class="header">
     <div class="top-left">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/"><img src="{{ asset('dash/images/logo.png') }}" title="Admin INR" alt="Logo"></a>
+            <a class="navbar-brand" href="/"><img src="{{ asset('dash/images/logo.png') }}" title="Admin INR"
+                    alt="Logo"></a>
             <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
         </div>
     </div>
@@ -11,7 +12,8 @@
             <div class="header-left">
 
                 <div class="dropdown for-notification">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="notification"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-bell"></i>
                         <span class="count bg-danger">3</span>
                     </button>
@@ -25,7 +27,8 @@
                 </div>
 
                 <div class="dropdown for-message">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-envelope"></i>
                         <span class="count bg-primary">4</span>
                     </button>
@@ -45,12 +48,15 @@
             </div>
 
             <div class="user-area dropdown float-right">
-                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle" src="{{ url(Auth::user()->img) }}" alt="User Avatar">
+                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <img class="user-avatar rounded-circle" src="{{ url(Auth::user()->takeImg) }}" alt="User Avatar">
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" href="" onclick="event.preventDefault(); document.getElementById('logout').submit();"><i class="fa fa-power-off"></i>Logout</a>
+                    <a class="nav-link" href=""
+                        onclick="event.preventDefault(); document.getElementById('logout').submit();"><i
+                            class="fa fa-power-off"></i>Logout</a>
 
                     <form id="logout" action="{{ route('logout') }}" method="POST" style="d-none">
                         @csrf

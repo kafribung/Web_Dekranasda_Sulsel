@@ -73,9 +73,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 // Auth Routes...
-// Route::get('/login', function () {
-//     return abort('404');
-// });
+
 Route::get('mattama', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('mattama', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');

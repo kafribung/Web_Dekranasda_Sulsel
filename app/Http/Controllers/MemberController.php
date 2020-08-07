@@ -48,13 +48,8 @@ class MemberController extends Controller
     // EDIT
     public function edit($slug)
     {
-        dd($slug);
         $member = Member::where('slug', $slug)->first();
-
-        if (!$member->isOwner()) {
-            return redirect('/member')->with('msg', 'Anda tidak memiliki akses');
-        }
-
+        $this->authorize('isOwner', $member);
         return view('dashboard_edit.member_edit', compact('member'));
     }
 
@@ -62,11 +57,8 @@ class MemberController extends Controller
     public function update(MemberRequest $request, $id)
     {
         $data = $request->all();
-
         $data['slug'] = Str::slug($request->name);
-
         Member::findOrFail($id)->update($data);
-
         return redirect('/member')->with('msg', 'Data anggota berhasil diedit');
     }
 
@@ -74,7 +66,6 @@ class MemberController extends Controller
     public function destroy($id)
     {
         Member::destroy($id);
-
         return redirect('/member')->with('msg', 'Data anggota berhasil dihapus');
     }
 }

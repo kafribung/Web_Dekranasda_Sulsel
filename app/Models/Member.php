@@ -9,7 +9,7 @@ class Member extends Model
 {
     protected $touches = ['user'];
     protected $guarded = ['created_at', 'updated_at'];
-    
+
     // Relation many to one (USER)
     public function user()
     {
@@ -27,16 +27,4 @@ class Member extends Model
     {
         return $this->hasMany('App\Models\Product');
     }
-
-    // isOwner
-    public function isOwner()
-    {
-        $user = Auth::check();
-
-        if ($user) {
-            return Auth::user()->id == $this->user->id;
-        } return false;
-    }
-
-    
 }

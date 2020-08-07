@@ -9,7 +9,7 @@ class MemberImg extends Model
 {
     protected $touches = ['user', 'member'];
     protected $guarded = ['created_at', 'updated_at'];
-    
+
     // Relation many to one (USER)
     public function user()
     {
@@ -29,13 +29,13 @@ class MemberImg extends Model
 
         if ($user) {
             return Auth::user()->id == $this->user->id;
-        } return false;
+        }
+        return false;
     }
 
-
-    // Mutator
-    public function getImgAttribute($value)
+    // Mutator IMG
+    public function getTakeImgAttribute()
     {
-        return url('img_members', $value);
+        return url('storage', $this->img);
     }
 }
