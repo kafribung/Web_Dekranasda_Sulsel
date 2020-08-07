@@ -20,38 +20,48 @@
                                 @method('PUT')
                                 <div class="form-group">
                                     <label for="img" class="control-label mb-1">Foto</label>
-                                    <img src="{{url($admin->img)}}" alt="Error" title="Gambar  {{$admin->name}}" width="80" width="80">
-                                    <input id="img" name="img" type="file" accept="image/*" class="form-control @error('img') is-invalid @enderror" autofocus placeholder="Input Foto">
+                                    <img src="{{url($admin->takeImg)}}" alt="Error" title="Gambar  {{$admin->name}}"
+                                        width="80" width="80">
+                                    <input id="img" name="img" type="file" accept="image/*"
+                                        class="form-control @error('img') is-invalid @enderror" autofocus
+                                        placeholder="Input Foto">
 
                                     @error('img')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
-                                    <input id="name" name="name" type="text" class="form-control @error('name') is-invalid @enderror"   autocomplete="off" placeholder="Input Nama" value="{{old('name') ? old('name') : $admin->name}}">
+                                    <input id="name" name="name" type="text"
+                                        class="form-control @error('name') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Nama" value="{{old('name') ? old('name') : $admin->name}}">
 
                                     @error('name')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email" class="control-label mb-1">Email</label>
-                                    <input id="email" name="email" email="email" class="form-control @error('email') is-invalid @enderror"   autocomplete="off" placeholder="Input Email" value="{{old('email') ? old('email') : $admin->email}}">
+                                    <input id="email" name="email" email="email"
+                                        class="form-control @error('email') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Email"
+                                        value="{{old('email') ? old('email') : $admin->email}}">
 
                                     @if ($errors->has('email'))
-                                        <p class="alert alert-danger">{{$errors->first('email')}}</p>
+                                    <p class="alert alert-danger">{{$errors->first('email')}}</p>
                                     @endif
                                 </div>
 
                                 <div class="form-group">
                                     <label for="password" class="control-label mb-1">Password</label>
-                                    <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror"   autocomplete="off" placeholder="Input Password" value="{{old('password')}}">
+                                    <input id="password" name="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" autocomplete="off"
+                                        placeholder="Input Password" value="{{old('password')}}">
 
                                     @error('password')
-                                        <p class="alert alert-danger">{{$message}}</p>
+                                    <p class="alert alert-danger">{{$message}}</p>
                                     @enderror
                                 </div>
 
@@ -71,6 +81,5 @@
     <!-- .animated -->
 </div>
 <!-- /.content -->
-    
-@endsection
 
+@endsection

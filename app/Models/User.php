@@ -78,12 +78,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Blog');
     }
-  
-  
+
 
     // Mutator
-    public function getImgAttribute($value)
+    public function getTakeImgAttribute()
     {
-        return url('img_users', $value);
+        return url('storage', $this->img);
     }
 }

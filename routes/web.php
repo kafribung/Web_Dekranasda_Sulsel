@@ -35,7 +35,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::put('member-img/{id}', 'MemberImgController@update');
     Route::delete('member-img/{id}', 'MemberImgController@destroy');
 
-
     // Produk Kategori
     Route::resource('product-category', 'ProductCategoryController');
 
@@ -72,6 +71,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::put('comment-blog/{id}', 'CommentBlogController@update');
     Route::delete('comment-blog/{id}', 'CommentBlogController@destroy');
 });
+
+// Auth Routes...
+// Route::get('/login', function () {
+//     return abort('404');
+// });
+Route::get('mattama', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('mattama', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 Auth::routes();
 

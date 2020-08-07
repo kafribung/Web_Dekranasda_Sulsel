@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 // Import Class AdminRequest
-use App\Http\Requests\AdminRequest; 
+use App\Http\Requests\AdminRequest;
 // Import Class Hash
 use Illuminate\Support\Facades\Hash;
 
 // Import DB Admin
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -18,7 +17,6 @@ class AdminController extends Controller
     public function index()
     {
         $admins = User::where('role', 1)->latest()->get();
-
         return view('dashboard.admin', compact('admins'));
     }
 
@@ -33,14 +31,9 @@ class AdminController extends Controller
     {
         $data = $request->all();
 
-        if ($request->has('img')) {
-            $img = $request->file('img');
-            $name= time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_users'), $name);
-
-            $data['img'] = $name;
+        if ($img = $request->file('img')) {
+            $data['img'] = $request->file('img')->storeAs('img_users', time() . '.' . $img->getClientOriginalExtension());
         }
-
         $data['password'] = Hash::make($request->password);
         $data['role']     = 1;
 
@@ -64,39 +57,35 @@ class AdminController extends Controller
     }
 
     // UPDATE
-    public function update(Request $request, $id)
+    public function update(AdminRequest $request, $id)
     {
-        $data = $request->validate([
-            'img'      => ['mimes:png,jpg,jpeg'],
-            'name'     => ['required', 'string', 'min:3', 'max:20'],
-            'email'    => ['required', 'email', 'string',],
-            'password' => ['required', 'string', 'min:8'],
-        ]);
-
-        if ($request->has('img')) {
-            $img = $request->file('img');
-            $name= time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_users'), $name);
-
-            $data['img'] = $name;
+        $data = $request->all();
+        $admin = User::findOrFail($id);
+        // Cek Request IMG
+        if ($img = $request->file('img')) {
+            // Jgn Hapus Default User
+            if ($admin->img != 'img_users/default_profile.jpg') {
+                Storage::delete($admin->img);
+            }
+            $data['img'] = $request->file('img')->storeAs('img_users', time() . '.' . $img->getClientOriginalExtension());
         }
-
         $data['password'] = Hash::make($request->password);
-
-        User::findOrFail($id)->update($data);
-
+        $admin->update($data);
         return redirect('/admin')->with('msg', 'Data admin berhasil diedit');
     }
 
     // DELETE
     public function destroy($id)
     {
-        if (User::count() == 1) {
+        if (User::where('role', 1)->count() == 1) {
             return redirect('/admin')->with('msg', 'Data admin tidak boleh kosong');
         }
 
+        $admin = User::findOrFail($id);
+        if ($admin->img != 'img_users/default_profile.jpg') {
+            Storage::delete($admin->img);
+        }
         User::destroy($id);
-
         return redirect('/admin')->with('msg', 'Data admin berhasil dihapus');
     }
 }

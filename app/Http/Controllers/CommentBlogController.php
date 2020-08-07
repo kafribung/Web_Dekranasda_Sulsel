@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
-
-
-// Import Model Comment
 use App\Models\CommentBlog;
 
 class CommentBlogController extends Controller

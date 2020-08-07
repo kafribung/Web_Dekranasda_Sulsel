@@ -25,7 +25,7 @@
 				<h1>Oops!</h1>
 				<h2>404 - The Page can't be found</h2>
 			</div>
-			<a href="/dashboard">Kembali ke bumi</a>
+			<a href="/">Kembali ke bumi</a>
 		</div>
 	</div>
 
