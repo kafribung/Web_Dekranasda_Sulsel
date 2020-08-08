@@ -54,6 +54,15 @@ Route::group(['middleware' => 'admin'], function () {
 Route::get('/', 'Pages\HomeController@index');
 // Anggota
 Route::get('anggota', 'Pages\AnggotaController@index');
+Route::get('anggota/{member:slug}', 'Pages\AnggotaController@show');
+
+// Kegiatan
+Route::get('kegiatan', 'Pages\KegiatanController@index');
+Route::get('kegiatan/{activity:slug}', 'Pages\KegiatanController@show');
+Route::post('kegiatan/komentar/{id}', 'Pages\KegiatanController@store');
+
+// Blog
+
 // Tentang
 Route::get('tentang', 'Pages\TentangController@index');
 // Anggota

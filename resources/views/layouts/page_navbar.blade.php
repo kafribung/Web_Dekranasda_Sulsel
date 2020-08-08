@@ -28,11 +28,10 @@
                                             </a>
                                         </li>
                                         <li class="dropdown dropdown-mega">
-                                            <a class="dropdown-item dropdown-toggle {{ Request::is('anggota')? 'active' : '' }}"
+                                            <a class="dropdown-item dropdown-toggle {{ Request::segment(1) == 'anggota' ? 'active' : '' }}"
                                                 href="/anggota">
                                                 Anggota
                                             </a>
-
                                         </li>
                                         <li class="dropdown">
                                             <a class="dropdown-item dropdown-toggle" href="produk.html">
@@ -41,7 +40,8 @@
                                         </li>
 
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="kegiatan.html">
+                                            <a class="dropdown-item dropdown-toggle {{ Request::segment(1) == 'kegiatan' ? 'active' : '' }}"
+                                                href="/kegiatan">
                                                 Kegiatan
                                             </a>
                                         </li>

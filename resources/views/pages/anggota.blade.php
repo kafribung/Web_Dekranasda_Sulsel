@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-md-12 align-self-center order-1">
                     <ul class="breadcrumb breadcrumb-light d-block text-center">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li class="active">Anggota</li>
                     </ul>
                 </div>
@@ -23,126 +23,35 @@
     <section class="section bg-light section-no-border m-0">
         <div class="container">
             <div class="row mb-5 pb-3">
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
+                @forelse ($members as $member)
+                <div class="col-md-6 col-lg-3 mt-4 mb-5 mb-lg-0 appear-animation"
+                    data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                     <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
+                        <img class="card-img-top" src="{{ url($member->takeImg) }}" alt="Card Image"
+                            title="Foto {{$member->name  }}">
                         <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="detail-anggota.html"
-                                class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
+                            <h4 class="card-title mb-1 text-4 font-weight-bold">{{ $member->name }}</h4>
+                            <p class="card-text">{!! Str::limit($member->description, 30) !!}</p>
+                            <a href="/anggota/{{ $member->slug }}"
+                                class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya
+                                <i class="fas fa-angle-right position-relative top-1 ml-1"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
-                    <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
-                        <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
-                    <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
-                        <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
-                    <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
-                        <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                <p class="alert alert-info">Data Anggota Belum ditambahakan</p>
+                @endforelse
             </div>
-            <div class="row mb-5 pb-3">
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
-                    <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
-                        <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
-                    <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
-                        <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
-                    <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
-                        <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter"
-                    data-appear-animation-delay="200">
-                    <div class="card">
-                        <img class="card-img-top" src="img/blog/wide/blog-11.jpg" alt="Card Image">
-                        <div class="card-body">
-                            <h4 class="card-title mb-1 text-4 font-weight-bold">Nama</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Curabitur rhoncus nulla dui, in dapi.</p>
-                            <a href="/" class="read-more text-color-primary font-weight-semibold text-2">Selengkapnya <i
-                                    class="fas fa-angle-right position-relative top-1 ml-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Pagination -->
             <div class="row">
                 <div class="col">
-                    <ul class="pagination float-right">
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
-                    </ul>
+                    <div class="float-right">
+                        {{ $members->links() }}
+                    </div>
                 </div>
             </div>
+            <!-- Pagination -->
             <div class="row mb-5">
                 <div class="col-lg-12 text-center appear-animation" data-appear-animation="fadeInUpShorter"
                     data-appear-animation-delay="200">
@@ -194,5 +103,4 @@
     </section>
     <!-- SECTION END -->
 </div>
-
 @stop

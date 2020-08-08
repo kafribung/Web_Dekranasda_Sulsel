@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class CommentBlog extends Model
 {
     protected $touches = ['blog'];
-    protected $guarded = ['created_at', 'updated_at'];
-    
+    protected $guarded = ['id', 'created_at', 'updated_at'];
+
     // Relation many to one (Blog)
     public function blog()
     {

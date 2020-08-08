@@ -57,7 +57,9 @@ class ActivityController extends Controller
         $data = $request->all();
         $activity = Activity::findOrFail($id);
         if ($img = $request->file('img')) {
-            Storage::delete($activity->img);
+            if ($activity->img != 'img_activities/default_activity.jpeg') {
+                Storage::delete($activity->img);
+            }
             $data['img'] = $request->file('img')->storeAs('img_activities', time() . '.' . $img->getClientOriginalExtension());
         }
         $data['slug'] = Str::slug($request->name);
@@ -70,7 +72,9 @@ class ActivityController extends Controller
     {
         $activity = Activity::findOrFail($id);
         $this->authorize('isOwner', $activity);
-        Storage::delete($activity->img);
+        if ($activity->img != 'img_activities/default_activity.jpeg') {
+            Storage::delete($activity->img);
+        }
         Activity::destroy($id);
         return redirect('/activity')->with('msg', 'Data Kegiatan Berhasil dihapus');
     }
