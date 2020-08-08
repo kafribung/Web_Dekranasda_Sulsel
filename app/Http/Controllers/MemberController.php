@@ -57,7 +57,9 @@ class MemberController extends Controller
         $data = $request->all();
         $member = Member::findOrFail($id);
         if ($img = $request->file('img')) {
-            Storage::delete($member->img);
+            if ($member->img != 'img_members/default_member.jpeg') {
+                Storage::delete($member->img);
+            }
             $data['img'] = $request->file('img')->storeAs('img_members', time() . '.' . $img->getClientOriginalExtension());
         }
         $data['slug'] = Str::slug($request->name);
@@ -69,7 +71,9 @@ class MemberController extends Controller
     public function destroy($id)
     {
         $member = Member::findOrFail($id);
-        Storage::delete($member->img);
+        if ($member->img != 'img_members/default_member.jpeg') {
+            Storage::delete($member->img);
+        }
         $this->authorize('isOwner', $member);
         Member::destroy($id);
         return redirect('/member')->with('msg', 'Data anggota berhasil dihapus');
