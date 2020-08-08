@@ -19,6 +19,18 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
+                                    <label for="img" class="control-label mb-1">Foto</label>
+                                    <img src="{{ url($member->takeImg) }}" alt="Error"
+                                        title="Gambar {{ $member->name }} " width="150">
+                                    <input id="img" name="img" type="file"
+                                        class="form-control @error('img') is-invalid @enderror" autofocus
+                                        accept="image/*">
+                                    @error('img')
+                                    <p class="alert alert-danger">{{$message}}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
                                     <label for="name" class="control-label mb-1">Nama</label>
                                     <input id="name" name="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" autocomplete="off"

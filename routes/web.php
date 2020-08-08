@@ -1,22 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// -----------------------------------------------------------ADMIN
 Route::group(['middleware' => 'admin'], function () {
     // Dashboard
     Route::get('dashboard', 'DashboardController@index');
@@ -26,14 +11,6 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Anggota
     Route::resource('member', 'MemberController');
-
-    // Anggote Gallery
-    Route::get('member-img/{slug}', 'MemberImgController@show');
-    Route::get('member-img/create/{slug}', 'MemberImgController@create');
-    Route::post('member-img/{slug}', 'MemberImgController@store');
-    Route::get('member-img/{slug}/edit', 'MemberImgController@edit');
-    Route::put('member-img/{id}', 'MemberImgController@update');
-    Route::delete('member-img/{id}', 'MemberImgController@destroy');
 
     // Produk Kategori
     Route::resource('product-category', 'ProductCategoryController');
@@ -72,12 +49,19 @@ Route::group(['middleware' => 'admin'], function () {
     Route::delete('comment-blog/{id}', 'CommentBlogController@destroy');
 });
 
-// Auth Routes...
+// -----------------------------------------------------------USER
+// Home
+Route::get('/', 'Pages\HomeController@index');
+// Anggota
+Route::get('anggota', 'Pages\AnggotaController@index');
+// Tentang
+Route::get('tentang', 'Pages\TentangController@index');
+// Anggota
+Route::get('kontak', 'Pages\KontakController@index');
 
+// Auth Routes...
 Route::get('mattama', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('mattama', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
-// Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();

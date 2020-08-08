@@ -16,15 +16,15 @@ class Member extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    // Relation one to many (MEMBER IMG)
-    public function membersImgs()
-    {
-        return $this->hasMany('App\Models\MemberImg');
-    }
-
     // Relation one to many (PRODUCT)
     public function products()
     {
         return $this->hasMany('App\Models\Product');
+    }
+
+    // Mutator
+    public function getTakeImgAttribute()
+    {
+        return url('storage', $this->img);
     }
 }

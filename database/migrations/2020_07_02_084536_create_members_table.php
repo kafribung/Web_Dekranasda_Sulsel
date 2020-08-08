@@ -17,6 +17,7 @@ class CreateMembersTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('img');
             $table->text('address');
             $table->string('product');
             $table->string('contact');

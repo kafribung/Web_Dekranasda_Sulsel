@@ -26,6 +26,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Foto</th>
                                         <th>Nama</th>
                                         <th>Produk</th>
                                         <th>Kontak</th>
@@ -42,6 +43,10 @@
                                     @forelse ($members as $member)
                                     <tr>
                                         <td>{{$angkaAwal++}}</td>
+                                        <td>
+                                            <img src="{{ url($member->takeImg) }}" title="Gambar {{ $member->name }}"
+                                                alt="error" width="150">
+                                        </td>
                                         <td>{{$member->name}}</td>
                                         <td>{{$member->product}}</td>
                                         <td>
@@ -53,10 +58,6 @@
                                         <td>{{$member->address}}</td>
                                         <td>{!! Str::limit($member->description, 10, '..') !!}</td>
                                         <td>
-                                            <a href="/member-img/{{$member->slug}}"
-                                                class="btn btn-outline-dark btn-sm ">
-                                                <i class="fa fa-picture-o"></i>
-                                            </a>
                                             @can('isOwner', $member)
                                             <a href="/member/{{$member->slug}}/edit"
                                                 class="btn btn-outline-warning btn-sm ">

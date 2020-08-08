@@ -8,6 +8,7 @@ use App\Http\Requests\MemberRequest;
 use Illuminate\Support\Str;
 // Import DB members
 use App\Models\Member;
+use Illuminate\Support\Facades\Storage;
 
 class MemberController extends Controller
 {
@@ -28,6 +29,9 @@ class MemberController extends Controller
     public function store(MemberRequest $request)
     {
         $data = $request->all();
+        if ($img = $request->file('img')) {
+            $data['img'] = $request->file('img')->storeAs('img_members', time() . '.' . $img->getClientOriginalExtension());
+        }
         $data['slug'] = Str::slug($request->name);
         $request->user()->members()->create($data);
         return redirect('/member')->with('msg', 'Data anggota berhasil ditambhakan');
@@ -51,8 +55,13 @@ class MemberController extends Controller
     public function update(MemberRequest $request, $id)
     {
         $data = $request->all();
+        $member = Member::findOrFail($id);
+        if ($img = $request->file('img')) {
+            Storage::delete($member->img);
+            $data['img'] = $request->file('img')->storeAs('img_members', time() . '.' . $img->getClientOriginalExtension());
+        }
         $data['slug'] = Str::slug($request->name);
-        Member::findOrFail($id)->update($data);
+        $member->update($data);
         return redirect('/member')->with('msg', 'Data anggota berhasil diedit');
     }
 
@@ -60,6 +69,7 @@ class MemberController extends Controller
     public function destroy($id)
     {
         $member = Member::findOrFail($id);
+        Storage::delete($member->img);
         $this->authorize('isOwner', $member);
         Member::destroy($id);
         return redirect('/member')->with('msg', 'Data anggota berhasil dihapus');

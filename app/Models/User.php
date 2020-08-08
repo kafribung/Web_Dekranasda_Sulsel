@@ -43,11 +43,6 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Member');
     }
 
-    // Relation one to many (MEMBER_IMG)
-    public function membersImgs()
-    {
-        return $this->hasMany('App\Models\MemberImg');
-    }
 
     // Relation one to many (PRODUCT CATEGORY)
     public function product_categories()
