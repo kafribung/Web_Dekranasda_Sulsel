@@ -17,9 +17,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="box-title text-center">Data Blog</h4>
-                            <a href="/blog/create" class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i></a>
+                            <a href="/blog/create" class="btn btn-outline-primary btn-sm float-right"><i
+                                    class="fa fa-plus"></i>
+                            </a>
                         </div>
-
                         <div class="table-stats">
                             <table class="table table-hover">
                                 <thead>
@@ -27,8 +28,8 @@
                                         <th>No</th>
                                         <th>Gambar</th>
                                         <th>Nama</th>
-                                        <th>Tgl</th>
                                         <th>Deskripsi</th>
+                                        <th>Jumlah Komentar</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -38,47 +39,43 @@
                                     @endphp
                                     @forelse ($blogs as $blog)
                                     <tr>
-                                        <td>{{$angkaAwal}}</td>
+                                        <td>{{ $angkaAwal++ }}</td>
                                         <td>
-                                            <img src="{{ url($blog->img) }}" title="Gambar {{ $blog->name }}" alt="error" width="80" height="80">
+                                            <img src="{{ url($blog->takeImg) }}" title="Gambar {{ $blog->name }}"
+                                                alt="error" width="150">
                                         </td>
                                         <td>{{$blog->name}}</td>
-                                        <td>{{$blog->tgl}}</td>
-                                        <td>{!! Str::limit($blog->description, 30) !!}</td>
-
+                                        <td>{!! Str::limit($blog->description, 10) !!}</td>
+                                        <td>{{ $blog->comments()->count() }}</td>
                                         <td>
-                                            <a href="/blog/{{$blog->slug}}/edit" class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i></a>
+                                            @can('isOwner', $blog)
+                                            <a href="/blog/{{$blog->slug}}/edit"
+                                                class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i>
+                                            </a>
                                             <form action="/blog/{{$blog->id}}" method="POST" class="d-inline-flex">
                                                 @csrf
                                                 @method('DELETE')
-
-                                                <button type="submit" onclick="return confirm('Hapus Data {{$blog->name}}?')" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                <button type="submit"
+                                                    onclick="return confirm('Hapus Data {{$blog->name}}?')"
+                                                    class="btn btn-outline-danger btn-sm"><i
+                                                        class="fa fa-trash"></i></button>
                                             </form>
+                                            @endcan
                                         </td>
                                     </tr>
-                                    @php
-                                    $angkaAwal++
-                                    @endphp
                                     @empty
                                     <td class="text-center">Data Blog masih kosong</td>
                                     @endforelse
-
                                 </tbody>
                             </table>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
         <!-- /#add-category -->
     </div>
     <!-- .animated -->
 </div>
 <!-- /.content -->
-
-
-
 @endsection

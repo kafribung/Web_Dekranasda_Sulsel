@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 // Import BlogRequest
 use App\Http\Requests\BlogRequest;
 // Import Class STR
 use Illuminate\Support\Str;
 // Import Model blog
 use App\Models\Blog;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
     // READ
     public function index()
     {
-        $blogs =  Blog::with('user')->latest()->get();
-
+        $blogs =  Blog::with('user', 'comments')->latest()->get();
         return view('dashboard.blog', compact('blogs'));
     }
 
@@ -30,18 +29,11 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
         $data = $request->all();
-
         if ($img = $request->file('img')) {
-            $name = time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_blogs'), $name);
-
-            $data['img'] = $name;
+            $data['img'] = $request->file('img')->storeAs('img_blogs', time() . '.' . $img->getClientOriginalExtension());
         }
-
         $data['slug'] = Str::slug($request->name);
-
         $request->user()->blogs()->create($data);
-
         return redirect('/blog')->with('msg', 'Data Blog Berhasil ditambahkan');
     }
 
@@ -55,7 +47,7 @@ class BlogController extends Controller
     public function edit($slug)
     {
         $blog =  Blog::with('user')->where('slug', $slug)->first();
-
+        $this->authorize('isOwner', $blog);
         return view('dashboard_edit.blog_edit', compact('blog'));
     }
 
@@ -63,27 +55,23 @@ class BlogController extends Controller
     public function update(BlogRequest $request, $id)
     {
         $data = $request->all();
-
+        $blog = Blog::findOrFail($id);
         if ($img = $request->file('img')) {
-            $name = time(). '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('img_blogs'), $name);
-
-            $data['img'] = $name;
+            Storage::delete($blog->img);
+            $data['img'] = $request->file('img')->storeAs('img_blogs', time() . '.' . $img->getClientOriginalExtension());
         }
-
         $data['slug'] = Str::slug($request->name);
-
-        Blog::findOrFail($id)->update($data);
-
-        return redirect('/blog')->with('msg','Data Blog Berhasil diedit');
+        $blog->update($data);
+        return redirect('/blog')->with('msg', 'Data Blog Berhasil diedit');
     }
 
     // DELETE
     public function destroy($id)
     {
+        $blog = Blog::findOrFail($id);
+        $this->authorize('isOwner', $blog);
+        Storage::delete($blog->img);
         Blog::destroy($id);
-
-        return redirect('/blog')->with('msg','Data Blog Berhasil dihapus');
+        return redirect('/blog')->with('msg', 'Data Blog Berhasil dihapus');
     }
-
 }

@@ -12,7 +12,6 @@ class CommentBlogController extends Controller
     public function index()
     {
         $comments = CommentBlog::with('blog')->orderBy('id', 'desc')->get();
-
         return view('dashboard.commentBlog', compact('comments'));
     }
     // CREATE
@@ -37,7 +36,6 @@ class CommentBlogController extends Controller
     public function edit($id)
     {
         $comment = CommentBlog::findOrFail($id);
-
         return view('dashboard_edit.commentBlog_edit', compact('comment'));
     }
 
@@ -45,9 +43,7 @@ class CommentBlogController extends Controller
     public function update(CommentRequest $request, $id)
     {
         $data = $request->all();
-
         CommentBlog::findOrFail($id)->update($data);
-
         return redirect('/comment-blog')->with('msg', 'Data Komentar Blog Berhasil diedit');
     }
 
@@ -55,7 +51,6 @@ class CommentBlogController extends Controller
     public function destroy($id)
     {
         CommentBlog::destroy($id);
-
         return redirect('/comment-blog')->with('msg', 'Data Komentar Blog Berhasil dihapus');
     }
 }

@@ -21,10 +21,9 @@ class Blog extends Model
         return $this->hasMany('App\Models\CommentBlog');
     }
 
-    
     // Mutator
-    public function getImgAttribute($value)
+    public function getTakeImgAttribute()
     {
-        return url('img_blogs', $value);
+        return url('storage', $this->img);
     }
 }
