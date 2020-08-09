@@ -11,7 +11,7 @@
                     berkualitas sebagai ikon Sulawesi Selatan. Kami mengajak para pengrajin serta pengusaha
                     untuk bergabung di dalam komunitas dibawah bimbingan kami dan mengembangkan potensi Anda
                     bersama kami.</p>
-                <p class="mb-0"><a href="tentang.html" class="btn-flat btn-xs text-color-light p-relative top-5"><strong
+                <p class="mb-0"><a href="/tentang" class="btn-flat btn-xs text-color-light p-relative top-5"><strong
                             class="text-2">Selengkapnya</strong><i
                             class="fas fa-angle-right p-relative top-1 pl-2"></i></a></p>
             </div>

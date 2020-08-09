@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-12 align-self-center order-1">
                     <ul class="breadcrumb breadcrumb-light d-block text-center">
-                        <li><a href="index.php">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li class="active">Kegiatan</li>
                     </ul>
                 </div>
@@ -45,7 +45,7 @@
                                     class="text-decoration-none">{{ $activity->name }}
                                 </a>
                             </h4>
-                            <div class="mb-1">{{ $activity->description }}</div>
+                            <div class="mb-1">{!! Str::limit($activity->description, 50) !!}</div>
                             <a href="/kegiatan/{{ $activity->slug }}"
                                 class="read-more text-color-dark font-weight-bold text-2">
                                 Selengkapnya
@@ -55,9 +55,12 @@
                     </article>
                 </div>
                 @empty
-                <p class="alert alert-info">Data Kegiatan Belum Ada</p>
+                <div class="col-lg-4 mb-4">
+                    <p class="alert alert-info">Data Kegiatan Belum Ada</p>
+                </div>
                 @endforelse
             </div>
+            <!-- Pagination -->
             <div class="row">
                 <div class="col">
                     <div class="float-right">
@@ -65,6 +68,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Pagination -->
         </div>
     </section>
     <!-- LIST KEGIATAN END -->

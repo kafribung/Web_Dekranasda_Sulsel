@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\Activity;
 use App\Http\Requests\CommentRequest;
-use App\Models\CommentActivity;
+use App\Models\{Activity, CommentActivity};
 
 
 

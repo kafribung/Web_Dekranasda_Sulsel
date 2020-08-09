@@ -71,7 +71,13 @@
                     </li>
                     <li><i class="fas fa-caret-right left-10"></i>
                         <strong class="text-color-primary">Produk:</strong>
-                        <a href="#"> {{ $member->product }}</a>
+                        <ul>
+                            @forelse ($member->products as $product)
+                            <li><a href="/produk/{{ $product->slug }}">{{ $product->name }}</a></li>
+                            @empty
+                            <li>Produk belum ada</li>
+                            @endforelse
+                        </ul>
                     </li>
                     <li><i class="fas fa-caret-right left-10"></i>
                         <strong class="text-color-primary">Kontak:</strong>

@@ -1,8 +1,7 @@
 @extends('layouts.page_master')
-@section('title', 'Detail-Kegiatan | Dekranasda Sulsel')
+@section('title', 'Detail-Blog | Dekranasda Sulsel')
 @section('content')
 <div role="main" class="main">
-
     <!-- BANNER -->
     <section
         class="page-header page-header-modern bg-color-light-scale-1 page-header-sm overlay overlay-color-dark overlay-show overlay-op-8"
@@ -17,7 +16,7 @@
                 <div class="col-md-12 align-self-center order-1">
                     <ul class="breadcrumb breadcrumb-light d-block text-center">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/kegiatan">Kegiatan</a></li>
+                        <li><a href="/blog">Blog</a></li>
                     </ul>
                 </div>
             </div>
@@ -25,7 +24,7 @@
     </section>
     <!-- BANNER END -->
 
-    <!-- POST BLOG -->
+    <!-- DETAIL BLOG -->
     <div class="container py-4">
         <div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
             <div class="col">
@@ -36,27 +35,23 @@
                                 data-plugin-options="{'items': 1, 'margin': 10, 'loop': false, 'nav': true, 'dots': true}">
                                 <div>
                                     <div class="img-thumbnail border-0 p-0 d-block">
-                                        <img class="img-fluid border-radius-0" src="{{ url($activity->takeImg) }}"
-                                            alt="" title="Foto {{ $activity->name }}" style="height: 500px">
+                                        <img class="img-fluid border-radius-0" src="{{ $blog->takeImg }}" alt=""
+                                            title="Foto {{ $blog->name }}" style="height: 500px">
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="post-date ml-0">
-                            <span class="day">{{ $activity->created_at->format('d') }}</span>
-                            <span class="month">{{ $activity->created_at->format('M-y') }}</span>
-                        </div>
-
                         <div class="post-content ml-0">
-                            <h2 class="font-weight-bold">{{ $activity->name }}</h2>
+                            <h2 class="font-weight-bold">{{ $blog->name }}</h2>
                             <div class="post-meta">
-                                <span><i class="far fa-user"></i> Oleh {{ $activity->user->name }} </span>
+                                <span><i class="far fa-calendar-alt"></i>{{ $blog->created_at->diffForHumans() }}</span>
+                                <span><i class="far fa-user"></i> Oleh {{ $blog->user->name }} </span>
                                 <span>
-                                    <i class="far fa-comments"></i>{{ $activity->comments()->count() }} Komentar
+                                    <i class="far fa-comments"></i> {{ $blog->comments()->count() }}
+                                    Komentar
                                 </span>
                             </div>
-                            <p>{!! $activity->description !!}</p>
+                            <p>{!! $blog->description !!}</p>
                             <div class="post-block mt-5 post-share">
                                 <strong
                                     class="text-uppercase text-1 mr-3 text-dark float-left position-relative top-2">Bagikan</strong>
@@ -65,12 +60,11 @@
                                     <div class="sharethis-inline-share-buttons"></div><!-- ShareThis END -->
                                 </ul>
                             </div>
-
                             <!-- KOMENTAR -->
                             <div id="comments" class="post-block mt-5 post-comments">
-                                <h4 class="mb-3">Komentar ({{ $activity->comments()->count() }})</h4>
+                                <h4 class="mb-3">Komentar ({{ $blog->comments()->count() }})</h4>
                                 <ul class="comments">
-                                    @forelse ($activity->comments as $comment)
+                                    @forelse ($blog->comments as $comment)
                                     <li>
                                         <div class="comment">
                                             <div class="img-thumbnail img-thumbnail-no-borders d-none d-sm-block">
@@ -97,7 +91,7 @@
 
                             <div class="post-block mt-5 post-leave-comment">
                                 <h4 class="mb-3">Tinggalkan Komentar</h4>
-                                <form class="p-4 rounded bg-color-grey" action="/kegiatan/komentar/{{ $activity->id }}"
+                                <form class="p-4 rounded bg-color-grey" action="/blogs/komentar/{{ $blog->id }}"
                                     method="POST">
                                     @csrf
                                     <div class="p-2">
@@ -145,6 +139,6 @@
             </div>
         </div>
     </div>
-    <!-- SECTION TWO END -->
+    <!-- DETAIL BLOG END -->
 </div>
 @stop

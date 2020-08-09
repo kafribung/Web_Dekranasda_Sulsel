@@ -40,7 +40,10 @@
                     </div>
                 </div>
                 @empty
-                <p class="alert alert-info">Data Anggota Belum ditambahakan</p>
+                <div class="col-md-6 col-lg-3 mt-4 mb-5 mb-lg-0 appear-animation"
+                    data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <p class="alert alert-info">Data Anggota Belum ditambahakan</p>
+                </div>
                 @endforelse
             </div>
             <!-- Pagination -->

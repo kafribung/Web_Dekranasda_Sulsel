@@ -6,6 +6,14 @@
 <meta name="description" content="Porto - Responsive HTML5 Template">
 <meta name="author" content="okler.net">
 
+<!-- Share Button -->
+<meta property="og:title" content="Join the best company in the world!" />
+<meta property="og:url" content="http://www.sharethis.com" />
+<meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
+<meta property="og:description"
+    content="ShareThis is its people. It's imperative that we hire smart,innovative people who can work intelligently as we continue to disrupt the very category we created. Come join us!" />
+<meta property="og:site_name" content="ShareThis" />
+
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ asset('asset/img/favicon.ico') }}" type="image/x-icon" />
 <link rel="apple-touch-icon" href="{{ asset('asset/img/favicon.ico') }}">

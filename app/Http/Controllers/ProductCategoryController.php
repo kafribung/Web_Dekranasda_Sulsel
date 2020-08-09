@@ -19,6 +19,7 @@ class ProductCategoryController extends Controller
     // CREATE
     public function create()
     {
+        return redirect('/product-category')->with('msg', 'Data Gagal tidak dapat diakses');
         return view('dashboard_create.product_category_create');
     }
 
@@ -39,6 +40,7 @@ class ProductCategoryController extends Controller
     // EDIT
     public function edit($id)
     {
+        return redirect('/product-category')->with('msg', 'Data Gagal tidak dapat diakses');
         $productCategory = ProductCategory::findOrFail($id);
         $this->authorize('isOwner', $productCategory);
         return view('dashboard_edit.product_category_edit', compact('productCategory'));
@@ -55,9 +57,10 @@ class ProductCategoryController extends Controller
     // DELETE
     public function destroy($id)
     {
-        $productCategory = ProductCategory::findOrFail($id);
-        $this->authorize('isOwner', $productCategory);
-        ProductCategory::destroy($id);
-        return redirect('/product-category')->with('msg', 'Data Produk Kategoti Berhasil dihapus');
+        return redirect('/product-category')->with('msg', 'Data Gagal tidak dapat diakses');
+        // $productCategory = ProductCategory::findOrFail($id);
+        // $this->authorize('isOwner', $productCategory);
+        // ProductCategory::destroy($id);
+        // return redirect('/product-category')->with('msg', 'Data Produk Kategoti Berhasil dihapus');
     }
 }

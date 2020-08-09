@@ -31,3 +31,9 @@
 <script src="{{ asset("asset/js/custom.js") }}"></script>
 <!-- Theme Initialization Files -->
 <script src="{{ asset("asset/js/theme.init.js") }}"></script>
+
+{{-- Plugin Share --}}
+<script type='text/javascript'
+    src='https://platform-api.sharethis.com/js/sharethis.js#property=5ef8452a678aaf0012f25cab&product=inline-share-buttons'
+    async='async'>
+</script>

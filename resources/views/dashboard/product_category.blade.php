@@ -17,8 +17,8 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="box-title text-center">Kategori Produk </h4>
-                            <a href="/product-category/create" class="btn btn-outline-primary btn-sm float-right"><i
-                                    class="fa fa-plus"></i>
+                            <a href="/product-category/create"
+                                class="btn btn-outline-primary btn-sm float-right disabled"><i class="fa fa-plus"></i>
                             </a>
                         </div>
                         <div class="table-stats">
@@ -41,7 +41,8 @@
                                         <td>
                                             @can('isOwner', $category)
                                             <a href="/product-category/{{$category->id}}/edit"
-                                                class="btn btn-outline-warning btn-sm "><i class="fa fa-edit"></i>
+                                                class="btn btn-outline-warning btn-sm disabled "><i
+                                                    class="fa fa-edit"></i>
                                             </a>
                                             <form action="/product-category/{{$category->id}}" method="POST"
                                                 class="d-inline-flex">
@@ -49,7 +50,7 @@
                                                 @method('DELETE')
                                                 <button type="submit"
                                                     onclick="return confirm('Hapus Data {{$category->name}}?')"
-                                                    class="btn btn-outline-danger btn-sm"><i
+                                                    class="btn btn-outline-danger btn-sm disabled"><i
                                                         class="fa fa-trash"></i></button>
                                             </form>
                                             @endcan

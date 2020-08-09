@@ -34,7 +34,8 @@
                                             </a>
                                         </li>
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="produk.html">
+                                            <a class="dropdown-item dropdown-toggle {{ Request::segment(1) == 'produk' ? 'active' : '' }}"
+                                                href="/produk">
                                                 Produk
                                             </a>
                                         </li>
@@ -46,8 +47,9 @@
                                             </a>
                                         </li>
                                         <li class="dropdown">
-                                            <a class="dropdown-item dropdown-toggle" href="blog.html">
-                                                Blog
+                                            <a class="dropdown-item dropdown-toggle {{ Request::segment(1) == 'blogs' ? 'active' : '' }}"
+                                                href="/blogs">
+                                                Blogs
                                             </a>
                                         </li>
                                         <li class="dropdown">
@@ -76,10 +78,10 @@
                                 <a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i
                                         class="fas fa-search header-nav-top-icon"></i></a>
                                 <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
-                                    <form role="search" action="page-search-results.html" method="get">
+                                    <form role="search" action="/seacrh" method="GET">
                                         <div class="simple-search input-group">
-                                            <input class="form-control text-1" id="headerSearch" name="q" type="search"
-                                                value="" placeholder="Search...">
+                                            <input class="form-control text-1" id="headerSearch" name="search"
+                                                type="search" placeholder="Search...">
                                             <span class="input-group-append">
                                                 <button class="btn" type="submit">
                                                     <i class="fa fa-search header-nav-top-icon"></i>

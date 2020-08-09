@@ -39,7 +39,6 @@
                         data-x="center" data-y="center" data-voffset="['-5','-5','-5','15']"
                         data-fontsize="['18','18','18','35']" data-lineheight="['20','20','20','40']">Dukung
                         Pengrajin Sulsel.</div>
-
                 </li>
             </ul>
         </div>
@@ -129,90 +128,50 @@
         <div class="container my-2">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="font-weight-normal text-6 mb-5">Kegiatan <strong
-                            class="font-weight-extra-bold">Kami</strong></h2>
+                    <h2 class="font-weight-normal text-6 mb-5">Kegiatan
+                        <strong class="font-weight-extra-bold">Kami</strong>
+                    </h2>
                 </div>
             </div>
             <div class="row">
+                @forelse ($activities as $activity)
                 <div class="col-lg-4 mb-4">
                     <article class="post post-large pb-5">
                         <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="{{ asset('asset/img/blog/medium/blog-11.jpg') }}"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                            <a href="/kegiatan/{{ $activity->slug }}">
+                                <img src="{{ $activity->takeImg }}"
+                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+                                    title="Foto  {{ $activity->name }}" />
                             </a>
                         </div>
-
                         <div class="post-date">
-                            <span class="day">15</span>
-                            <span class="month">Jan</span>
+                            <span class="day">{{ $activity->created_at->format('d') }}</span>
+                            <span class="month">{{ $activity->created_at->format('M-y') }}</span>
                         </div>
                         <div class="post-content">
-                            <h4><a href="blog-post.html" class="text-decoration-none">This is a stardard post
-                                    with preview image</a></h4>
-                            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                                aliquam nisi ultricies nisi luctus, sed fermentum.</p>
-                            <a href="blog-post.html"
-                                class="read-more text-color-dark font-weight-bold text-2">Selengkapnya <i
-                                    class="fas fa-chevron-right text-1 ml-1"></i></a>
+                            <h4>
+                                <a href="/kegiatan/{{ $activity->slug }}"
+                                    class="text-decoration-none">{{ $activity->name }}
+                                </a>
+                            </h4>
+                            <div class="mb-1">{!! Str::limit($activity->description, 50) !!}</div>
+                            <a href="/kegiatan/{{ $activity->slug }}"
+                                class="read-more text-color-dark font-weight-bold text-2">
+                                Selengkapnya
+                                <i class="fas fa-chevron-right text-1 ml-1"></i>
+                            </a>
                         </div>
                     </article>
                 </div>
+                @empty
                 <div class="col-lg-4 mb-4">
-                    <article class="post post-large pb-5">
-                        <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="{{ asset('asset/img/blog/medium/blog-11.jpg') }}"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                            </a>
-                        </div>
-
-                        <div class="post-date">
-                            <span class="day">15</span>
-                            <span class="month">Jan</span>
-                        </div>
-                        <div class="post-content">
-
-                            <h4><a href="blog-post.html" class="text-decoration-none">This is a stardard post
-                                    with preview image</a></h4>
-                            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                                aliquam nisi ultricies nisi luctus, sed fermentum.</p>
-                            <a href="blog-post.html"
-                                class="read-more text-color-dark font-weight-bold text-2">Selengkapnya <i
-                                    class="fas fa-chevron-right text-1 ml-1"></i></a>
-                        </div>
-                    </article>
+                    <p class="alert alert-info">Data Kegiatan Belum Ada</p>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <article class="post post-large pb-5">
-                        <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="{{ asset('asset/img/blog/medium/blog-11.jpg') }}"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                            </a>
-                        </div>
-
-                        <div class="post-date">
-                            <span class="day">15</span>
-                            <span class="month">Jan</span>
-                        </div>
-                        <div class="post-content">
-
-                            <h4><a href="blog-post.html" class="text-decoration-none">This is a stardard post
-                                    with preview image</a></h4>
-                            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                                aliquam nisi ultricies nisi luctus, sed fermentum.</p>
-                            <a href="blog-post.html"
-                                class="read-more text-color-dark font-weight-bold text-2">Selengkapnya <i
-                                    class="fas fa-chevron-right text-1 ml-1"></i></a>
-
-                        </div>
-                    </article>
-                </div>
+                @endforelse
             </div>
             <div class="row mb-5">
                 <div class="col-lg-12 text-center">
-                    <a href="#" class="btn btn-modern btn-primary mb-2">LIHAT LEBIH BANYAK</a>
+                    <a href="/kegiatan" class="btn btn-modern btn-primary mb-2">LIHAT LEBIH BANYAK</a>
                 </div>
             </div>
         </div>
@@ -232,47 +191,43 @@
             <div class="row pb-4 mb-5 appear-animation" data-appear-animation="fadeInUpShorter"
                 data-appear-animation-delay="200">
                 <div class="colmd-6 col-lg-1-5">
-                    <a href="portfolio-single-wide-slider.html">
+                    <a href="#">
                         <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="{{ asset('asset/img/koperasidanumkm.png') }}" class="img-fluid" alt="">
-
                             </span>
                         </span>
                     </a>
                 </div>
                 <div class="colmd-6 col-lg-1-5">
-                    <a href="portfolio-single-wide-slider.html">
+                    <a href="#">
                         <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="{{ asset('asset/img/dinasperdagangan.png') }}" class="img-fluid" alt="">
-
                             </span>
                         </span>
                     </a>
                 </div>
                 <div class="colmd-6 col-lg-1-5">
-                    <a href="portfolio-single-wide-slider.html">
+                    <a href="#">
                         <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="{{ asset('asset/img/dinaspariwisata.png') }}" class="img-fluid" alt="">
-
                             </span>
                         </span>
                     </a>
                 </div>
                 <div class="colmd-6 col-lg-1-5">
-                    <a href="portfolio-single-wide-slider.html">
+                    <a href="#">
                         <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="{{ asset('asset/img/dinasperindustrian.png') }}" class="img-fluid" alt="">
-
                             </span>
                         </span>
                     </a>
                 </div>
                 <div class="colmd-6 col-lg-1-5">
-                    <a href="portfolio-single-wide-slider.html">
+                    <a href="#">
                         <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="{{ asset('asset/img/dinaspenanamanmodal.png') }}" class="img-fluid" alt="">
@@ -296,85 +251,45 @@
                 </div>
             </div>
             <div class="row">
+                @forelse ($blogs as $blog)
                 <div class="col-lg-4 mb-4">
-                    <article class="post post-large pb-5">
+                    <article class="post post-medium border-0 pb-0 mb-5">
                         <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="{{ asset('asset/img/blog/medium/blog-11.jpg') }}"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
+                            <a href="/blogs/{{ $blog->slug }}">
+                                <img src="{{ $blog->takeImg }}"
+                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt=""
+                                    title="Foto {{ $blog->name }}" />
                             </a>
                         </div>
-
-                        <div class="post-date">
-                            <span class="day">15</span>
-                            <span class="month">Jan</span>
-                        </div>
                         <div class="post-content">
-
-                            <h4><a href="blog-post.html" class="text-decoration-none">This is a stardard post
-                                    with preview image</a></h4>
-                            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                                aliquam nisi ultricies nisi luctus, sed fermentum.</p>
-                            <a href="blog-post.html"
-                                class="read-more text-color-dark font-weight-bold text-2">Selengkapnya <i
-                                    class="fas fa-chevron-right text-1 ml-1"></i></a>
+                            <h2 class="font-weight-semibold text-5 line-height-6 mt-3 mb-2">
+                                <a href="/blogs/{{ $blog->slug }}">{{ $blog->name }}</a>
+                            </h2>
+                            <p>{!! Str::limit($blog->description, 50) !!}</p>
+                            <div class="post-meta">
+                                <span><i class="far fa-calendar-alt"></i>{{ $blog->created_at->diffForHumans() }}</span>
+                                <span><i class="far fa-user"></i> Oleh {{ $blog->user->name }} </span>
+                                <span>
+                                    <i class="far fa-comments"></i> {{ $blog->comments()->count() }}
+                                    Komentar
+                                </span>
+                                <span class="d-block mt-2">
+                                    <a href="/blogs/{{ $blog->slug }}"
+                                        class="btn btn-xs btn-light text-1 text-uppercase">Selengkapnya</a>
+                                </span>
+                            </div>
                         </div>
                     </article>
                 </div>
+                @empty
                 <div class="col-lg-4 mb-4">
-                    <article class="post post-large pb-5">
-                        <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="img/blog/medium/blog-11.jpg"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                            </a>
-                        </div>
-
-                        <div class="post-date">
-                            <span class="day">15</span>
-                            <span class="month">Jan</span>
-                        </div>
-                        <div class="post-content">
-                            <h4><a href="blog-post.html" class="text-decoration-none">This is a stardard post
-                                    with preview image</a></h4>
-                            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                                aliquam nisi ultricies nisi luctus, sed fermentum.</p>
-                            <a href="blog-post.html"
-                                class="read-more text-color-dark font-weight-bold text-2">Selengkapnya <i
-                                    class="fas fa-chevron-right text-1 ml-1"></i></a>
-
-                        </div>
-                    </article>
+                    <p class="alert alert-info">Data Blogs Belum Ada</p>
                 </div>
-                <div class="col-lg-4 mb-4">
-                    <article class="post post-large pb-5">
-                        <div class="post-image">
-                            <a href="blog-post.html">
-                                <img src="img/blog/medium/blog-11.jpg"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt="" />
-                            </a>
-                        </div>
-
-                        <div class="post-date">
-                            <span class="day">15</span>
-                            <span class="month">Jan</span>
-                        </div>
-                        <div class="post-content">
-
-                            <h4><a href="blog-post.html" class="text-decoration-none">This is a stardard post
-                                    with preview image</a></h4>
-                            <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-                                aliquam nisi ultricies nisi luctus, sed fermentum.</p>
-                            <a href="blog-post.html"
-                                class="read-more text-color-dark font-weight-bold text-2">Selengkapnya <i
-                                    class="fas fa-chevron-right text-1 ml-1"></i></a>
-                        </div>
-                    </article>
-                </div>
+                @endforelse
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <a href="#" class="btn btn-modern btn-primary mb-2">KUNJUNGI BLOG</a>
+                    <a href="/blog" class="btn btn-modern btn-primary mb-2">KUNJUNGI BLOG</a>
                 </div>
             </div>
         </div>

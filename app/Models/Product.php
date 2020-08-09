@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Auth;
+use Laravel\Scout\Searchable;
+use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use Searchable;
     protected $touches = ['user'];
     protected $guarded = ['created_at', 'updated_at'];
 
