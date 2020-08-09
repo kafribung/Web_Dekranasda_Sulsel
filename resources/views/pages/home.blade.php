@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="get-started text-left text-lg-right">
-                        <a href="registrasi.html"
+                        <a href="/registrasi"
                             class="btn btn-primary btn-lg text-3 font-weight-semibold px-4 py-3">Gabung
                             sekarang</a>
                     </div>
@@ -268,11 +268,6 @@
                             <p>{!! Str::limit($blog->description, 50) !!}</p>
                             <div class="post-meta">
                                 <span><i class="far fa-calendar-alt"></i>{{ $blog->created_at->diffForHumans() }}</span>
-                                <span><i class="far fa-user"></i> Oleh {{ $blog->user->name }} </span>
-                                <span>
-                                    <i class="far fa-comments"></i> {{ $blog->comments()->count() }}
-                                    Komentar
-                                </span>
                                 <span class="d-block mt-2">
                                     <a href="/blogs/{{ $blog->slug }}"
                                         class="btn btn-xs btn-light text-1 text-uppercase">Selengkapnya</a>

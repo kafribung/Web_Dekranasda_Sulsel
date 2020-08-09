@@ -63,6 +63,10 @@ Route::get('tentang', 'Pages\TentangController@index');
 Route::get('kontak', 'Pages\KontakController@index');
 // Search
 Route::get('seacrh', 'Pages\SearchController@index');
+// Registrasi
+Route::get('registrasi', 'Pages\RegistrasiController@index');
+Route::get('registrasi/donwload', 'Pages\RegistrasiController@donwload');
+
 
 // Auth Routes...
 Route::get('mattama', 'Auth\LoginController@showLoginForm')->name('login');

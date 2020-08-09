@@ -58,7 +58,7 @@
             <div class="row mb-5">
                 <div class="col-lg-12 text-center appear-animation" data-appear-animation="fadeInUpShorter"
                     data-appear-animation-delay="200">
-                    <a href="registrasi.html" class="btn btn-outline btn-primary mb-2">BERGABUNGLAH BERSAMA
+                    <a href="/registrasi" class="btn btn-outline btn-primary mb-2">BERGABUNGLAH BERSAMA
                         KAMI!</a>
                 </div>
             </div>
