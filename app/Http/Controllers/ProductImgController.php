@@ -23,8 +23,8 @@ class ProductImgController extends Controller
     public function store(ProductImgRequest $request, $id)
     {
         $model = Product::findOrFail($id);
-        if (ProductImg::where('product_id', $id)->count() >= 5) {
-            return redirect('/product-img/' . $model->slug)->with('msg', 'Data Galeri Max 5');
+        if (ProductImg::where('product_id', $id)->count() >= 3) {
+            return redirect('/product-img/' . $model->slug)->with('msg', 'Data Galeri Max 3');
         }
         $data = $request->all();
         if ($img = $request->file('img')) {
