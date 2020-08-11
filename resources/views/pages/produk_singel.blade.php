@@ -54,7 +54,7 @@
                                 <h2 class="text-color-dark font-weight-normal text-5 mb-2">
                                     <strong class="font-weight-extra-bold">{{ $product->name }}</strong>
                                 </h2>
-                                <p>{!! Str::limit($product->description) !!}</p>
+                                <p>{!! $product->description !!}</p>
                             </div>
                             <div class="col-md-5">
                                 <h2 class="text-color-dark font-weight-normal text-5 mb-2">Detail

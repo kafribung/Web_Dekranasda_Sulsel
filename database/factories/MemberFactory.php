@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Member::class, function (Faker $faker) {
     return [
         'name' => $faker->name(),
-        'description' => $faker->paragraph(300),
+        'description' => $faker->paragraph(100),
         'img'  => 'img_members/default_member.jpeg',
         'address' => $faker->address(),
         'contact' => '085331459400',
