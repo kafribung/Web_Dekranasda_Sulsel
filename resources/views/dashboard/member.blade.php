@@ -28,7 +28,6 @@
                                         <th>No</th>
                                         <th>Foto</th>
                                         <th>Nama</th>
-                                        <th>Produk</th>
                                         <th>Kontak</th>
                                         <th>Website</th>
                                         <th>Alamat</th>
@@ -48,7 +47,6 @@
                                                 alt="error" width="150">
                                         </td>
                                         <td>{{$member->name}}</td>
-                                        <td>{{$member->product}}</td>
                                         <td>
                                             <a href="tel:{{$member->contact}}" target="_self">{{$member->contact}}</a>
                                         </td>

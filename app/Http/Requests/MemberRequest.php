@@ -26,7 +26,6 @@ class MemberRequest extends FormRequest
         return [
             'img'      => ['required', 'mimes:png,jpg,jpeg'],
             'name'     => ['required', 'string', 'min:3', 'max:20', 'unique:members'],
-            'product'  => ['required', 'string', 'min:3', 'max:200'],
             'contact'  => ['required', 'string', 'min:10', 'max:15'],
             'website'  => ['required', 'url'],
             'address'  => ['required'],

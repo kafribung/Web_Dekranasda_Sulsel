@@ -38,16 +38,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="product" class="control-label mb-1">Produk</label>
-                                    <input id="product" name="product" type="text"
-                                        class="form-control @error('product') is-invalid @enderror" autocomplete="off"
-                                        placeholder="Input Produk" value="{{old('product')}}">
-                                    @if ($errors->has('product'))
-                                    <p class="alert alert-danger">{{$errors->first('product')}}</p>
-                                    @endif
-                                </div>
-
-                                <div class="form-group">
                                     <label for="contact" class="control-label mb-1">Kontak</label>
                                     <input id="contact" name="contact" type="number"
                                         class="form-control @error('contact') is-invalid @enderror" autocomplete="off"

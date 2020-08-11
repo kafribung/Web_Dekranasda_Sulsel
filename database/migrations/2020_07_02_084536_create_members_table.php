@@ -19,7 +19,6 @@ class CreateMembersTable extends Migration
             $table->text('description');
             $table->string('img');
             $table->text('address');
-            $table->string('product');
             $table->string('contact');
             $table->string('website')->nullable();
             $table->string('slug');
