@@ -57,7 +57,7 @@
                                     <label for="website" class="control-label mb-1">Website</label>
                                     <input id="website" name="website" type="url"
                                         class="form-control @error('website') is-invalid @enderror" autocomplete="off"
-                                        placeholder="Input Website (Boleh Kosong)"
+                                        placeholder="Input Website (FB, IG, atau yg Lainnya)"
                                         value="{{old('website') ? old('website') : $member->website}}">
 
                                     @error('website')

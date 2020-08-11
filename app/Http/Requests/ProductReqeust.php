@@ -24,12 +24,12 @@ class ProductReqeust extends FormRequest
     public function rules()
     {
         return [
-            'name'     => ['required', 'string', 'min:3', 'max:20', 'unique:products'],
+            'name'     => ['required', 'string', 'min:3', 'max:50', 'unique:products'],
             'price'    => ['required', 'integer', 'min:4'],
             'address'  => ['required', 'string', 'min:3', 'max:200'],
-            'member_id'=> ['required', 'string'],
-            'product_category_id'=> ['required', 'string'],
-            'description'=> ['required']
+            'member_id' => ['required', 'string'],
+            'product_category_id' => ['required', 'string'],
+            'description' => ['required']
         ];
     }
 }
