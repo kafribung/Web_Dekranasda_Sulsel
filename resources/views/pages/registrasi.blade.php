@@ -22,36 +22,21 @@
 
     <div class="container">
         <h3>Daftar Sekarang!</h3>
-        <p>Untuk menjadi anggota UMKM binaan Dekranasda Sulsel, silakan ikuti langkah-langkah berikut.</p>
+        <p>Untuk menjadi anggota UMKM binaan Dekranasda Sulsel, silakan ikuti donwload dokumen dibawah ini untuk
+            mendapatkan penjelasan rule pendaftaran.</p>
         <div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <section class="call-to-action with-borders button-centered mb-5">
                     <div class="col-12">
                         <div class="call-to-action-content">
-                            <h3>1. Download Dokumen</h3>
-                            <p class="mb-0">Download dan isi dokumen untuk mendaftar</p>
+                            <h3>Download Dokumen</h3>
+                            <p class="mb-0">Download untuk mendapatkan informasi Dekranasda dan link registrasi</p>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="call-to-action-btn">
                             <a href="/registrasi/donwload" target="_blank"
                                 class="btn btn-modern text-2 btn-primary">Download</a>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="col-lg-6">
-                <section class="call-to-action with-borders button-centered mb-5">
-                    <div class="col-12">
-                        <div class="call-to-action-content">
-                            <h3>2. Isi Biodata dan Upload Dokumen</strong></h3>
-                            <p class="mb-0">Upload dokumen untuk verifikasi</p>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="call-to-action-btn">
-                            <a href="form-registrasi.html" target="_blank"
-                                class="btn btn-modern text-2 btn-primary">Lanjutkan</a>
                         </div>
                     </div>
                 </section>
