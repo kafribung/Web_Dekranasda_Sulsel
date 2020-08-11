@@ -17,13 +17,13 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 class="box-title text-center">Produk {{$product->name}}</h4>
+                            <h5 class="box-title text-center">MAX(3 GAMBAR)</h5>
                             @can('isOwner', $product)
                             <a href="/product-img/create/{{$product->slug}}"
                                 class="btn btn-outline-primary btn-sm float-right"><i class="fa fa-plus"></i>
                             </a>
                             @endcan
                         </div>
-
                         <div class="table-stats">
                             <table class="table table-hover">
                                 <thead>

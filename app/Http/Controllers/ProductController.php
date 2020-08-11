@@ -8,6 +8,7 @@ use App\Http\Requests\ProductReqeust;
 use Illuminate\Support\Str;
 // Import Model 
 use App\Models\{ProductCategory, Member, Product};
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -63,15 +64,20 @@ class ProductController extends Controller
     // Delete
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('productsImgs')->findOrFail($id);
         $this->authorize('isOwner', $product);
+        // Delete Relasi Image
+        if ($product->productsImgs()->count() != 0) {
+            foreach ($product->productsImgs as $productsImg) {
+                Storage::delete($productsImg->img);
+            }
+        }
         Product::destroy($id);
         return redirect('/product')->with('msg', 'Data Produk Berhasil dihapus');
     }
 
     public function popular($slug)
     {
-
         $data = Product::where('slug', $slug)->first();
         // Seleksi Popular Max 1
         if (Product::where('popular', 1)->count() >= 1) {

@@ -2,17 +2,18 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<meta name="keywords" content="HTML5 Template" />
-<meta name="description" content="Porto - Responsive HTML5 Template">
-<meta name="author" content="okler.net">
+<meta name="keywords"
+    content="Produk Kerajinan sulsel sulawesi selatan kerajinan tangan kerajinan keren kerajian unik" />
+<meta name="description" content="Dewan Kerajinan Nasional (National Crafts Council of Indonesia) Sulawesi Selatan">
+<meta name="author" content="dekranasdasulsel">
 
 <!-- Share Button -->
-<meta property="og:title" content="Join the best company in the world!" />
-<meta property="og:url" content="http://www.sharethis.com" />
+<meta property="og:title" content="dekranasdasulsel" />
+<meta property="og:url" content="http://dekranasdasulsel.id/" />
 <meta property="og:image" content="http://sharethis.com/images/logo.jpg" />
 <meta property="og:description"
-    content="ShareThis is its people. It's imperative that we hire smart,innovative people who can work intelligently as we continue to disrupt the very category we created. Come join us!" />
-<meta property="og:site_name" content="ShareThis" />
+    content="Dewan Kerajinan Nasional (National Crafts Council of Indonesia) Sulawesi Selatan"" />
+<meta property=" og:site_name" content="dekransdasulsel" />
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ asset('asset/img/favicon.ico') }}" type="image/x-icon" />
