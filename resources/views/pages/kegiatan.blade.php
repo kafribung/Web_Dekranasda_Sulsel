@@ -32,12 +32,12 @@
                             <a href="/kegiatan/{{ $activity->slug }}">
                                 <img src="{{ $activity->takeImg }}"
                                     class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
-                                    title="Foto  {{ $activity->name }}" />
+                                    style="height: 250px; " title="Foto  {{ $activity->name }}" />
                             </a>
                         </div>
                         <div class="post-date">
-                            <span class="day">{{ $activity->created_at->format('d') }}</span>
-                            <span class="month">{{ $activity->created_at->format('M-y') }}</span>
+                            <span class="day">{{ date("d", strtotime($activity->tgl)) }}</span>
+                            <span class="month">{{ date("M-y", strtotime($activity->tgl)) }}</span>
                         </div>
                         <div class="post-content">
                             <h4>

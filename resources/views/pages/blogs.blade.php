@@ -31,8 +31,8 @@
                         <div class="post-image">
                             <a href="/blogs/{{ $blog->slug }}">
                                 <img src="{{ $blog->takeImg }}"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt=""
-                                    title="Foto {{ $blog->name }}" />
+                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+                                    style="height: 250px; " alt="" title="Foto {{ $blog->name }}" />
                             </a>
                         </div>
                         <div class="post-content">

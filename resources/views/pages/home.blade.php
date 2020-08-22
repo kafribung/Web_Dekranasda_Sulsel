@@ -141,12 +141,12 @@
                             <a href="/kegiatan/{{ $activity->slug }}">
                                 <img src="{{ $activity->takeImg }}"
                                     class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
-                                    title="Foto  {{ $activity->name }}" />
+                                    title="Foto  {{ $activity->name }}" style="height: 250px; " />
                             </a>
                         </div>
                         <div class="post-date">
-                            <span class="day">{{ $activity->created_at->format('d') }}</span>
-                            <span class="month">{{ $activity->created_at->format('M-y') }}</span>
+                            <span class="day">{{ date("d", strtotime($activity->tgl)) }}</span>
+                            <span class="month">{{ date("M-y", strtotime($activity->tgl)) }}</span>
                         </div>
                         <div class="post-content">
                             <h4>
@@ -181,59 +181,86 @@
     <!-- MITRA -->
     <section class="section section-primary section-no-border section-height-2 my-0 appear-animation"
         data-appear-animation="fadeIn">
-        <div class="container">
+
+        <div class="container py-2">
             <div class="row pt-4 mt-5">
                 <div class="col text-center appear-animation" data-appear-animation="fadeInUpShorter">
                     <h2 class="font-weight-normal text-6">Lembaga Kedinasan yang Menaungi <strong
                             class="font-weight-extra-bold">Dekranasda Provinsi Sulawesi Selatan</strong></h2>
                 </div>
             </div>
-            <div class="row pb-4 mb-5 appear-animation" data-appear-animation="fadeInUpShorter"
-                data-appear-animation-delay="200">
-                <div class="colmd-6 col-lg-1-5">
-                    <a href="#">
-                        <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
-                            <span class="thumb-info-wrapper">
-                                <img src="{{ asset('asset/img/koperasidanumkm.png') }}" class="img-fluid" alt="">
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="colmd-6 col-lg-1-5">
-                    <a href="#">
-                        <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
-                            <span class="thumb-info-wrapper">
-                                <img src="{{ asset('asset/img/dinasperdagangan.png') }}" class="img-fluid" alt="">
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="colmd-6 col-lg-1-5">
-                    <a href="#">
-                        <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
-                            <span class="thumb-info-wrapper">
-                                <img src="{{ asset('asset/img/dinaspariwisata.png') }}" class="img-fluid" alt="">
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="colmd-6 col-lg-1-5">
-                    <a href="#">
-                        <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
-                            <span class="thumb-info-wrapper">
-                                <img src="{{ asset('asset/img/dinasperindustrian.png') }}" class="img-fluid" alt="">
-                            </span>
-                        </span>
-                    </a>
-                </div>
-                <div class="colmd-6 col-lg-1-5">
-                    <a href="#">
-                        <span class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten">
-                            <span class="thumb-info-wrapper">
-                                <img src="{{ asset('asset/img/dinaspenanamanmodal.png') }}" class="img-fluid" alt="">
-                            </span>
-                        </span>
-                    </a>
+
+            <ul class="nav nav-pills sort-source sort-source-style-3 justify-content-center" data-sort-id="portfolio"
+                data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
+                <!-- <li class="nav-item active" data-option-value="*"><a class="nav-link text-1 text-uppercase active" href="#">Show All</a></li>
+				<li class="nav-item" data-option-value=".websites"><a class="nav-link text-1 text-uppercase" href="#">Websites</a></li>
+				<li class="nav-item" data-option-value=".logos"><a class="nav-link text-1 text-uppercase" href="#">Logos</a></li>
+				<li class="nav-item" data-option-value=".brands"><a class="nav-link text-1 text-uppercase" href="#">Brands</a></li>
+				<li class="nav-item" data-option-value=".medias"><a class="nav-link text-1 text-uppercase" href="#">Medias</a></li> -->
+            </ul>
+
+            <div class="sort-destination-loader sort-destination-loader-showing mt-4 pt-2">
+                <div class="row portfolio-list sort-destination" data-sort-id="portfolio">
+
+                    <div class="row pb-4 mb-5 appear-animation" data-appear-animation="fadeInUpShorter"
+                        data-appear-animation-delay="200">
+
+                        <div class="colmd-6 col-lg-1-5 mb-5 mb-lg-0 isotope-item websites">
+                            <div class="portfolio-item">
+                                <span class="thumb-info thumb-info-lighten thumb-info-no-borders-rounded">
+                                    <span class="thumb-info-wrapper border-radius-0">
+                                        <img src="{{ asset('asset/img/koperasidanumkm.png') }}" class="img-fluid"
+                                            alt="">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="colmd-6 col-lg-1-5 mb-5 mb-lg-0 isotope-item websites">
+                            <div class="portfolio-item">
+                                <span class="thumb-info thumb-info-lighten thumb-info-no-borders-rounded">
+                                    <span class="thumb-info-wrapper border-radius-0">
+                                        <img src="{{ asset('asset/img/dinasperdagangan.png') }}" class="img-fluid"
+                                            alt="">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="colmd-6 col-lg-1-5 mb-5 mb-lg-0 isotope-item websites">
+                            <div class="portfolio-item">
+                                <span class="thumb-info thumb-info-lighten thumb-info-no-borders-rounded">
+                                    <span class="thumb-info-wrapper border-radius-0">
+                                        <img src="{{ asset('asset/img/dinaspariwisata.png') }}" class="img-fluid"
+                                            alt="">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="colmd-6 col-lg-1-5 mb-5 mb-lg-0 isotope-item websites">
+                            <div class="portfolio-item">
+                                <span class="thumb-info thumb-info-lighten thumb-info-no-borders-rounded">
+                                    <span class="thumb-info-wrapper border-radius-0">
+                                        <img src="{{ asset('asset/img/dinasperindustrian.png') }}" class="img-fluid"
+                                            alt="">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="colmd-6 col-lg-1-5 mb-5 mb-lg-0 isotope-item websites">
+                            <div class="portfolio-item">
+                                <span class="thumb-info thumb-info-lighten thumb-info-no-borders-rounded">
+                                    <span class="thumb-info-wrapper border-radius-0">
+                                        <img src="{{ asset('asset/img/dinaspenanamanmodal.png') }}" class="img-fluid"
+                                            alt="">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -257,8 +284,8 @@
                         <div class="post-image">
                             <a href="/blogs/{{ $blog->slug }}">
                                 <img src="{{ $blog->takeImg }}"
-                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0" alt=""
-                                    title="Foto {{ $blog->name }}" />
+                                    class="img-fluid img-thumbnail img-thumbnail-no-borders rounded-0"
+                                    style="height: 250px; " alt="" title="Foto {{ $blog->name }}" />
                             </a>
                         </div>
                         <div class="post-content">
@@ -284,7 +311,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <a href="/blog" class="btn btn-modern btn-primary mb-2">KUNJUNGI BLOG</a>
+                    <a href="/blogs" class="btn btn-modern btn-primary mb-2">KUNJUNGI BLOG</a>
                 </div>
             </div>
         </div>

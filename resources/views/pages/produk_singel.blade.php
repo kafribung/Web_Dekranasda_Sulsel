@@ -37,7 +37,7 @@
                                 <div>
                                     <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
                                         <img src="{{ url($productsImg->takeImg) }}" class="img-fluid border-radius-0"
-                                            alt="" style="height: 500px">
+                                            alt="" style="height: 300px ;">
                                     </div>
                                 </div>
                                 @empty
@@ -76,7 +76,8 @@
                                     </li>
                                 </ul>
                                 <hr class="solid my-5">
-                                <a href="https://api.whatsapp.com/send?phone=+6289517206301" target="_blank"
+                                <a href="https://api.whatsapp.com/send?phone=+6289517206301&text=Saya ingin memesan produk khas Sulawesi Selatan%0A%0ANama :%0AAlamat :%0ANama produk :%0AJumlah pesanan :"
+                                    target="_blank"
                                     class="btn btn-primary btn-lg text-3 font-weight-semibold px-4 py-3">Pesan
                                     sekarang</a>
                                 <hr class="solid my-5">
@@ -111,7 +112,8 @@
                     <span class="thumb-info thumb-info-hide-wrapper-bg">
                         <span class="thumb-info-wrapper">
                             @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                            <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                            <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" style="height: 250px"
+                                title="Produk Alam" />
                             @empty
                             <h4>Tidak memiliki gambar</h4>
                             @endforelse

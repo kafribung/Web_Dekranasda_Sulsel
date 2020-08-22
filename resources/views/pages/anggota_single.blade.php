@@ -30,14 +30,12 @@
                     data-plugin-options="{'items': 1, 'margin': 10, 'loop': false, 'nav': true, 'dots': false, 'autoHeight': true}">
                     <div>
                         <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
-                            <img src="{{ url($member->takeImg) }}" class="img-fluid border-radius-0" alt=""
-                                style="height: 500px">
+                            <img src="{{ url($member->takeImg) }}" class="img-fluid border-radius-0" alt="">
                         </div>
                     </div>
                     <div>
                         <div class="img-thumbnail border-0 border-radius-0 p-0 d-block">
-                            <img src="{{ url($member->takeImg) }}" class="img-fluid border-radius-0" alt=""
-                                style="height: 500px">
+                            <img src="{{ url($member->takeImg) }}" class="img-fluid border-radius-0" alt="">
                         </div>
                     </div>
                 </div>
@@ -102,7 +100,8 @@
                 <div class="col-md-6 col-lg-3 mt-4 mb-5 mb-lg-0 appear-animation"
                     data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                     <div class="card">
-                        <img class="card-img-top" src="{{ url($member->takeImg) }}" alt="Card Image">
+                        <img class="card-img-top" style="height: 200px; " src="{{ url($member->takeImg) }}"
+                            alt="Card Image">
                         <div class="card-body">
                             <h4 class="card-title mb-1 text-4 font-weight-bold">{{ $member->name }}</h4>
                             <p class="card-text">{!! Str::limit($member->description, 30) !!}</p>

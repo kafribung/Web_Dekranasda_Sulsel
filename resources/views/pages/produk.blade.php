@@ -27,11 +27,11 @@
         data-appear-animation-delay="200">
         <div class="container container-lg">
             <div class="row align-items-center">
-                <div class="col-lg-6 fluid-col-lg-6" style="min-height: 33vw;">
+                <div class="col-lg-6 fluid-col-lg-6" style="height: 33vw;">
                     <div class="fluid-col fluid-col-left">
                         @forelse ($popular->productsImgs()->take(1)->get() as $productImg)
                         <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Terpopuler"
-                            style="height: 500px" />
+                            style="height: 330px; width: 1536px" />
                         @empty
                         <h6>Produk Terpopuler Belum di set</h6>
                         @endforelse
@@ -47,7 +47,7 @@
                             <strong>{{ $popular->name }}</strong>
                         </span>
                         <p class="lead mb-4 pb-2">Oleh: {{ $popular->member->name }}</p>
-                        <p class="lead mb-4 pb-2">{!! Str::limit($popular->description, 200) !!}</p>
+                        <p class="">{!! Str::limit($popular->description, 200) !!}</p>
                         <p class="lead mb-4 pb-2 text-color-dark">
                             <strong>Harga: {{ number_format($popular->price, 2)  }} </strong>
                         </p>
@@ -64,6 +64,7 @@
         </div>
     </section>
     <!-- END -->
+
 
     <!-- LIST PRODUK -->
     <div class="container py-2">
@@ -85,7 +86,8 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg">
                             <span class="thumb-info-wrapper">
                                 @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                                <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                                <img src="{{ $productImg->takeImg }}" class="img-fluid" style="height: 250px; " alt=""
+                                    title="Produk Alam" />
                                 @empty
                                 <h4>Tidak memiliki gambar</h4>
                                 @endforelse
@@ -119,7 +121,8 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg">
                             <span class="thumb-info-wrapper">
                                 @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                                <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                                <img src="{{ $productImg->takeImg }}" class="img-fluid" style="height: 250px; " alt=""
+                                    title="Produk Alam" />
                                 @empty
                                 <h4>Tidak memiliki gambar</h4>
                                 @endforelse
@@ -152,7 +155,8 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg">
                             <span class="thumb-info-wrapper">
                                 @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                                <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                                <img src="{{ $productImg->takeImg }}" class="img-fluid" style="height: 250px; " alt=""
+                                    title="Produk Alam" />
                                 @empty
                                 <h4>Tidak memiliki gambar</h4>
                                 @endforelse
@@ -185,7 +189,8 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg">
                             <span class="thumb-info-wrapper">
                                 @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                                <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                                <img src="{{ $productImg->takeImg }}" class="img-fluid" style="height: 250px; " alt=""
+                                    title="Produk Alam" />
                                 @empty
                                 <h4>Tidak memiliki gambar</h4>
                                 @endforelse
@@ -218,7 +223,8 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg">
                             <span class="thumb-info-wrapper">
                                 @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                                <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                                <img src="{{ $productImg->takeImg }}" class="img-fluid" style="height: 250px; " alt=""
+                                    title="Produk Alam" />
                                 @empty
                                 <h4>Tidak memiliki gambar</h4>
                                 @endforelse
@@ -251,7 +257,8 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg">
                             <span class="thumb-info-wrapper">
                                 @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                                <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                                <img src="{{ $productImg->takeImg }}" class="img-fluid" style="height: 250px; " alt=""
+                                    title="Produk Alam" />
                                 @empty
                                 <h4>Tidak memiliki gambar</h4>
                                 @endforelse
@@ -284,7 +291,8 @@
                         <span class="thumb-info thumb-info-hide-wrapper-bg">
                             <span class="thumb-info-wrapper">
                                 @forelse ($product->productsImgs()->take(1)->get() as $productImg)
-                                <img src="{{ $productImg->takeImg }}" class="img-fluid" alt="" title="Produk Alam" />
+                                <img src="{{ $productImg->takeImg }}" class="img-fluid" style="height: 250px; " alt=""
+                                    title="Produk Alam" />
                                 @empty
                                 <h4>Tidak memiliki gambar</h4>
                                 @endforelse

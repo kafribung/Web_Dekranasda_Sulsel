@@ -9,7 +9,7 @@ class AnggotaController extends Controller
 {
     public function index()
     {
-        $members = Member::with('user', 'products')->orderBy('id', 'desc')->paginate(8);
+        $members = Member::with('user', 'products')->orderBy('id', 'desc')->paginate(20);
         return view('pages.anggota', compact('members'));
     }
 

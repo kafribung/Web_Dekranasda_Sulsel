@@ -37,15 +37,15 @@
                                 <div>
                                     <div class="img-thumbnail border-0 p-0 d-block">
                                         <img class="img-fluid border-radius-0" src="{{ url($activity->takeImg) }}"
-                                            alt="" title="Foto {{ $activity->name }}" style="height: 500px">
+                                            alt="" title="Foto {{ $activity->name }}">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="post-date ml-0">
-                            <span class="day">{{ $activity->created_at->format('d') }}</span>
-                            <span class="month">{{ $activity->created_at->format('M-y') }}</span>
+                            <span class="day">{{ date("d", strtotime($activity->tgl)) }}</span>
+                            <span class="month">{{ date("M-y", strtotime($activity->tgl)) }}</span>
                         </div>
 
                         <div class="post-content ml-0">

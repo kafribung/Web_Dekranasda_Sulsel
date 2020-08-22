@@ -1,5 +1,5 @@
 @extends('auth.master_auth')
-@section('title')
+@section('title', 'Register Admin Dekranasda')
 @section('content')
 
 <div class="limiter">
@@ -12,13 +12,13 @@
             </div>
 
             @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <p class="alert alert-danger">{{$error}}</p>
-                @endforeach   
+            @foreach ($errors->all() as $error)
+            <p class="alert alert-danger">{{$error}}</p>
+            @endforeach
             @endif
 
             @if (session('msg'))
-                <p class="alert alert-danger">{{session('msg')}}</p>
+            <p class="alert alert-danger">{{session('msg')}}</p>
             @endif
 
             <form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
@@ -26,14 +26,16 @@
 
                 <div class="wrap-input100 validate-input m-b-26">
                     <span class="label-input100">Name</span>
-                    <input class="input100" type="text"  @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="off" autofocus placeholder="Enter username">
+                    <input class="input100" type="text" @error('name') is-invalid @enderror" name="name"
+                        value="{{ old('name') }}" autocomplete="off" autofocus placeholder="Enter username">
                     <span class="focus-input100"></span>
 
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-26">
                     <span class="label-input100">Email</span>
-                    <input class="input100" type="email"  @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="off"  placeholder="Enter email">
+                    <input class="input100" type="email" @error('email') is-invalid @enderror" name="email"
+                        value="{{ old('email') }}" autocomplete="off" placeholder="Enter email">
                     <span class="focus-input100"></span>
 
                 </div>
@@ -41,14 +43,16 @@
 
                 <div class="wrap-input100 validate-input m-b-18">
                     <span class="label-input100">Password</span>
-                    <input class="input100" type="password" @error('password') is-invalid @enderror" name="password" autocomplete="current-password" placeholder="Enter password">
+                    <input class="input100" type="password" @error('password') is-invalid @enderror" name="password"
+                        autocomplete="current-password" placeholder="Enter password">
                     <span class="focus-input100"></span>
 
                 </div>
 
                 <div class="wrap-input100 validate-input m-b-18">
                     <span class="label-input100">Confirm Password</span>
-                    <input class="input100" type="password" name="password_confirmation" autocomplete="new-password" placeholder="Confirm password">
+                    <input class="input100" type="password" name="password_confirmation" autocomplete="new-password"
+                        placeholder="Confirm password">
                     <span class="focus-input100"></span>
 
                 </div>

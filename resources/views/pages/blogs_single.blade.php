@@ -16,7 +16,7 @@
                 <div class="col-md-12 align-self-center order-1">
                     <ul class="breadcrumb breadcrumb-light d-block text-center">
                         <li><a href="/">Home</a></li>
-                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/blogs">Blog</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                                 <div>
                                     <div class="img-thumbnail border-0 p-0 d-block">
                                         <img class="img-fluid border-radius-0" src="{{ $blog->takeImg }}" alt=""
-                                            title="Foto {{ $blog->name }}" style="height: 500px">
+                                            title="Foto {{ $blog->name }}">
                                     </div>
                                 </div>
                             </div>

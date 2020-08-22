@@ -27,8 +27,8 @@
                 <div class="col-md-6 col-lg-3 mt-4 mb-5 mb-lg-0 appear-animation"
                     data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                     <div class="card">
-                        <img class="card-img-top" src="{{ url($member->takeImg) }}" alt="Card Image"
-                            title="Foto {{$member->name  }}">
+                        <img class="card-img-top" style="height: 200px;" src="{{ url($member->takeImg) }}"
+                            alt="Card Image" title="Foto {{$member->name  }}">
                         <div class="card-body">
                             <h4 class="card-title mb-1 text-4 font-weight-bold">{{ $member->name }}</h4>
                             <p class="card-text">{!! Str::limit($member->description, 30) !!}</p>
